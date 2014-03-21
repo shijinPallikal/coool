@@ -1,0 +1,499 @@
+
+<?php foreach ($webpackages as $webpackage)?>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+   $(".editbox").hide();
+$(".edit_tr").click(function(){
+
+var ID=$(this).attr('id');
+
+$("#pkg_one_name"+ID).hide();
+$("#pkg_two_name"+ID).hide();
+$("#pkg_three_name"+ID).hide();
+
+$("#first_fee_kr").hide();
+$("#first_fee_euro").hide();
+$("#second_fee_kr").hide();
+$("#second_fee_euro").hide();
+$("#third_fee_kr").hide();
+$("#third_fee_euro").hide();
+
+$("#first_cost_kr").hide();
+$("#first_cost_euro").hide();
+$("#second_cost_kr").hide();
+$("#second_cost_euro").hide();
+$("#third_cost_kr").hide();
+$("#third_cost_euro").hide();
+
+$("#first_market_kr").hide();
+$("#first_market_euro").hide();
+$("#second_market_kr").hide();
+$("#second_market_euro").hide();
+$("#third_market_kr").hide();
+$("#third_market_euro").hide();
+
+$("#pkg_one_name_"+ID).show();
+$("#pkg_two_name_"+ID).show();
+$("#pkg_three_name_"+ID).show();
+$("#pkg_one_img_").show();
+
+$("#first_fee_kr_").show();
+$("#first_fee_euro_").show();
+$("#second_fee_kr_").show();
+$("#second_fee_euro_").show();
+$("#third_fee_kr_").show();
+$("#third_fee_euro_").show();
+
+$("#first_cost_kr_").show();
+$("#first_cost_euro_").show();
+$("#second_cost_kr_").show();
+$("#second_cost_euro_").show();
+$("#third_cost_kr_").show();
+$("#third_cost_euro_").show();
+
+$("#first_market_kr_").show();
+$("#first_market_euro_").show();
+$("#second_market_kr_").show();
+$("#second_market_euro_").show();
+$("#third_market_kr_").show();
+$("#third_market_euro_").show();
+
+
+}).change(function(){
+var ID=$(this).attr('id');
+
+var pkg_one_name=$("#pkg_one_name_").val();
+var pkg_two_name=$("#pkg_two_name_").val();
+var pkg_three_name=$("#pkg_three_name_").val();
+
+var first_fee_kr=$("#first_fee_kr_").val();
+var first_fee_euro=$("#first_fee_euro_").val();
+var second_fee_kr=$("#second_fee_kr_").val();
+var second_fee_euro=$("#second_fee_euro_").val();
+var third_fee_kr=$("#third_fee_kr_").val();
+var third_fee_euro=$("#third_fee_euro_").val();
+
+var first_cost_kr=$("#first_cost_kr_").val();
+var first_cost_euro=$("#first_cost_euro_").val();
+var second_cost_kr=$("#second_cost_kr_").val();
+var second_cost_euro=$("#second_cost_euro_").val();
+var third_cost_kr=$("#third_cost_kr_").val();
+var third_cost_euro=$("#third_cost_euro_").val();
+
+var first_market_kr=$("#first_market_kr_").val();
+var first_market_euro=$("#first_market_euro_").val();
+var second_market_kr=$("#second_market_kr_").val();
+var second_market_euro=$("#second_market_euro_").val();
+var third_market_kr=$("#third_market_kr_").val();
+var third_market_euro=$("#third_market_euro_").val();
+
+//document.write(ID);
+//alert(first);
+
+var dataString = 'id='+'<?php echo $webpackage['id'];?>'+'&packageFirst='+pkg_one_name+'&packageSecond='+pkg_two_name+'&packageThird='+pkg_three_name+'&firstFeeKr='+first_fee_kr+'&firstFeeEuro='+first_fee_euro+'&secondFeeKr='+second_fee_kr+'&secondFeeEuro='+second_fee_euro+'&thirdFeeKr='+third_fee_kr+'&thirdFeeEuro='+third_fee_euro+'&firstCostKr='+first_cost_kr+'&firstCostEuro='+first_cost_euro+'&secondCostKr='+second_cost_kr+'&secondCostEuro='+second_cost_euro+'&thirdCostKr='+third_cost_kr+'&thirdCostEuro='+third_cost_euro+'&firstMarketKr='+first_market_kr+'&firstMarketEuro='+first_market_euro+'&secondMarketKr='+second_market_kr+'&secondMarketEuro='+second_market_euro+'&thirdMarketKr='+third_market_kr+'&thirdMarketEuro='+third_market_euro;
+
+
+//if(first.length && last.length>0)
+//{
+    //alert('hi');
+$.ajax({
+type: "POST",
+url: "<?php echo $this->basePath().'/admin/website/editAjax';?> " ,
+data: dataString,
+cache: false,
+beforeSend:function(){
+    $("#first_"+ID).html('<img src=<?php echo $this->basePath().'/images/'?>load_rs.gif />');
+},
+success: function(html){
+    //alert(html);    
+$("#pkg_one_name").html(pkg_one_name);   
+$("#pkg_two_name").html(pkg_two_name); 
+$("#pkg_three_name").html(pkg_three_name); 
+    
+$("#first_fee_kr").html(first_fee_kr+'Kr');
+$("#first_fee_euro").html('('+first_fee_euro+'Euro)');
+$("#second_fee_kr").html(second_fee_kr+'Kr');
+$("#second_fee_euro").html('('+second_fee_euro+'Euro)');
+$("#third_fee_kr").html(third_fee_kr+'Kr');
+$("#third_fee_euro").html('('+third_fee_euro+'Euro)');
+
+$("#first_cost_kr").html(first_cost_kr+'Kr');
+$("#first_cost_euro").html('('+first_cost_euro+'Euro)');
+$("#second_cost_kr").html(second_cost_kr+'Kr');
+$("#second_cost_euro").html('('+second_cost_euro+'Euro)');
+$("#third_cost_kr").html(third_cost_kr+'Kr');
+$("#third_cost_euro").html('('+third_cost_euro+'Euro)');
+
+$("#first_market_kr").html(first_market_kr+'Kr');
+$("#first_market_euro").html('('+first_market_euro+'Euro)');
+$("#second_market_kr").html(second_market_kr+'Kr');
+$("#second_market_euro").html('('+second_market_euro+'Euro)');
+$("#third_market_kr").html(third_market_kr+'Kr');
+$("#third_market_euro").html('('+third_market_euro+'Euro)');
+},
+error:function(){alert('error');
+},
+});
+//}
+//else
+//{
+//alert('Enter something.');
+//}
+
+});
+
+$(".editbox").mouseup(function() 
+{
+return false
+});
+
+$(document).mouseup(function()
+{
+$(".editbox").hide();
+$(".text").show();
+});
+
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function()
+{$(".editbox").hide();
+$(".edit_tr2").click(function()
+{
+var ID=$(this).attr('id');
+
+$("#specification"+ID).hide();
+$("#package_one"+ID).hide();
+$("#package_two"+ID).hide();
+$("#package_three"+ID).hide();
+
+$("#specification_"+ID).show();
+$("#package_one_"+ID).show();
+$("#package_two_"+ID).show();
+$("#package_three_"+ID).show();
+
+
+}).change(function(){
+var ID=$(this).attr('id');
+
+var specification=$("#specification_"+ID).val();
+var package_one  =$("#package_one_"+ID).val();
+var package_two  =$("#package_two_"+ID).val();
+var package_three=$("#package_three_"+ID).val();
+
+//document.write(ID);
+var dataString = 'id='+ID+'&specification='+specification+'&packageOne='+package_one+'&packageTwo='+package_two+'&packageThree='+package_three;
+
+//if(first.length && last.length>0)
+//{
+    //alert('hi');
+$.ajax({
+type: "POST",
+url: "<?php echo $this->basePath().'/admin/specification/editAjax';?> " ,
+data: dataString,
+cache: false,
+beforeSend:function(){
+    $("#specification_"+ID).html('<img src=<?php echo $this->basePath().'/images/'?>load_rs.gif />');
+},
+success: function(html){
+    //alert(html);    
+$("#specification"+ID).html(specification);  
+$("#package_one"+ID).html(package_one); 
+$("#package_two"+ID).html(package_two); 
+$("#package_three"+ID).html(package_three); 
+
+},
+error:function(){alert('error');
+},
+});
+//}
+//else
+//{
+//alert('Enter something.');
+//}
+
+});
+
+$(".editbox").mouseup(function() 
+{
+return false
+});
+
+$(document).mouseup(function()
+{
+$(".editbox").hide();
+$(".text").show();
+});
+
+});
+</script>
+
+
+<style>
+body
+{
+font-family:Arial, Helvetica, sans-serif;
+font-size:14px;
+}
+.editbox
+{
+display:none;
+}
+td
+{
+padding:7px;
+}
+.editbox
+{
+font-size:14px;
+width:270px;
+background-color:#ffffcc;
+width:150px;
+border:solid 1px #000;
+padding:4px;
+}
+.edit_td:hover
+{
+background:url(<?php echo $this->basePath().'/images/';?>edit_rs.png) right no-repeat #80C8E5;
+cursor:pointer;
+}
+th
+{
+font-weight:bold;
+text-align:left;
+padding:4px;
+}
+.head
+{
+background-color:#333;
+color:#FFFFFF
+
+}
+
+</style>
+
+
+<style type="text/css">
+   // .ston { cursor: pointer;} .stof { cursor: pointer;} .del { cursor: pointer;}
+
+</style>
+
+<div class="span9" id="content">
+    <div class="row-fluid">
+      	<div class="navbar">
+           	<div class="navbar-inner">
+	            <ul class="breadcrumb">
+	                <i class="icon-chevron-left hide-sidebar">
+                        <a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a>
+                    </i>
+	                <i class="icon-chevron-right show-sidebar" style="display:none;">
+                        <a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a>
+                    </i>
+	                <li>
+	                    <a href="">Dashboard</a> <span class="divider">/</span>	
+	                </li>
+	                <li>
+	                    <a href="">Home</a> <span class="divider">/</span>	
+	                </li>
+	                <li class="active">Website Packages</li>
+	            </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            	<div class="comments well">
+            	
+             <table class="table table-bordered">
+                 <tr id="1" style="background:#eee;" class="edit_tr">
+                          <td></td>
+                          
+                           <td>  <ul class="comment-list ">
+				<div class="comment pull-right">
+			        <a class="" href="#">
+				   <?php						
+					if($webpackage['package_one_image']=='') {
+				?>		
+                                        <img class="avatar" src="img/photos/home_pls.gif" alt="" />
+				<?php }
+					else {
+				?>
+                                        <img class="avatar" src="<?php echo $this->basePath().'/images/products/web_package/'.$webpackage['package_one_image'];?>" alt="" width="154" height="103"/>
+					
+				<?php 
+				       }
+				?>
+				</a>
+                                </div>
+					<div class="comment-author"><a href="#"><?=$webpackage['package_one_name'];?></a></div>
+                                        <input class="editbox" style="width:125Px;" id="pkg_one_img_<?=$webpackage['id'];?>" type="file">                                  
+			</ul></td>
+            
+              <td><ul class="comment-list">
+				<div class="comment pull-right">
+				 <a class="" href="#">
+				   <?php						
+					if($webpackage['package_two_image']=='') {
+				?>		
+                                        <img class="avatar" src="img/photos/home_pls.gif" alt="" />
+				<?php }
+					else {
+				?>
+                                        <img class="avatar" src="<?php echo $this->basePath().'/images/products/web_package/'.$webpackage['package_two_image'];?>" alt="" width="154" height="103"/ />
+					
+				<?php 
+				       }
+				?>
+				</a>
+                                </div>
+					<div class="comment-author hidden-xs"><a href="#"><?=$webpackage['package_two_name'];?></a></div>                                       
+                 </div>
+			</ul></td>
+                          <td> <ul class="comment-list">
+				<div class="comment pull-right">
+				 <a class="" href="#">
+				   <?php						
+					if($webpackage['package_three_image']=='') {
+				?>		
+                                        <img class="avatar" src="img/photos/home_pls.gif" alt="" />
+				<?php }
+					else {
+				?>
+                                        <img class="avatar" src="<?php echo $this->basePath().'/images/products/web_package/'.$webpackage['package_three_image'];?>" alt="" width="154" height="103"/ />
+					
+				<?php 
+				       }
+				?>
+				</a>
+                                </div>
+		                <div class="comment-author hidden-xs"><a href="#"><?=$webpackage['package_three_name'];?></a></div>
+                   
+			</ul></td>
+                        
+                         
+                         
+                        </tr>
+                        
+                        <tr id="2" class="edit_tr" style="background:#eee;">
+                          <td><strong>Setup fee (one time fee)</strong></td>
+                          <td class="edit_td">
+<span id="first_fee_kr" class="text"><?=$webpackage['package_one_setupfee_kr'];?>Kr</span>
+<span id="first_fee_euro" class="text">(<?=$webpackage['package_one_setupfee_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_one_setupfee_kr'];?>" class="editbox" id="first_fee_kr_" />
+<input type="text" value="<?=$webpackage['package_one_setupfee_euro'];?>" class="editbox" id="first_fee_euro_" />
+                          </td>
+                          <td class="edit_td">
+<span id="second_fee_kr" class="text"><?=$webpackage['package_two_setupfee_kr'];?>Kr</span>
+<span id="second_fee_euro" class="text">(<?=$webpackage['package_two_setupfee_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_two_setupfee_kr'];?>" class="editbox" id="second_fee_kr_" />
+<input type="text" value="<?=$webpackage['package_two_setupfee_euro'];?>" class="editbox" id="second_fee_euro_" />
+
+                          </td>
+                          <td class="edit_td">
+<span id="third_fee_kr" class="text"><?=$webpackage['package_three_setupfee_kr'];?>Kr</span>
+<span id="third_fee_euro" class="text">(<?=$webpackage['package_three_setupfee_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_three_setupfee_kr'];?>" class="editbox" id="third_fee_kr_" />
+<input type="text" value="<?=$webpackage['package_three_setupfee_euro'];?>" class="editbox" id="third_fee_euro_" />
+                          </td>                         
+                        </tr>                      
+                     
+                        <tr id="3" class="edit_tr" style="background:#eee;">
+                          <td><strong>Monthly cost</strong></td>
+                          <td class="edit_td">
+<span id="first_cost_kr" class="text"><?=$webpackage['package_one_monthlycost_kr'];?>Kr</span>
+<span id="first_cost_euro" class="text">(<?=$webpackage['package_one_monthlycost_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_one_monthlycost_kr'];?>" class="editbox" id="first_cost_kr_" />
+<input type="text" value="<?=$webpackage['package_one_monthlycost_euro'];?>" class="editbox" id="first_cost_euro_" />
+
+                          </td>
+                          <td class="edit_td">
+<span id="second_cost_kr" class="text"><?=$webpackage['package_two_monthlycost_kr'];?>Kr</span>
+<span id="second_cost_euro" class="text">(<?=$webpackage['package_two_monthlycost_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_two_monthlycost_kr'];?>" class="editbox" id="second_cost_kr_" />
+<input type="text" value="<?=$webpackage['package_two_monthlycost_euro'];?>" class="editbox" id="second_cost_euro_" />
+
+                          </td>
+                          <td class="edit_td">
+<span id="third_cost_kr" class="text"><?=$webpackage['package_three_monthlycost_kr'];?>Kr</span>
+<span id="third_cost_euro" class="text">(<?=$webpackage['package_three_monthlycost_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_three_monthlycost_kr'];?>" class="editbox" id="third_cost_kr_" />
+<input type="text" value="<?=$webpackage['package_three_monthlycost_euro'];?>" class="editbox" id="third_cost_euro_" />                              
+
+                          </td>                         
+                         
+                        </tr>
+                        <tr id="4" class="edit_tr" style="background:#eee;">
+                          <td width="31%"><strong>Market price </strong></td>
+                          <td width="25%" class="edit_td">
+<span id="first_market_kr" class="text"><?=$webpackage['package_one_marketplace_kr'];?>Kr</span>
+<span id="first_market_euro" class="text">(<?=$webpackage['package_one_marketplace_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_one_marketplace_kr'];?>" class="editbox" id="first_market_kr_" />
+<input type="text" value="<?=$webpackage['package_one_marketplace_euro'];?>" class="editbox" id="first_market_euro_" /> 
+                          </td>
+                          <td width="20%" class="edit_td">
+<span id="second_market_kr" class="text"><?=$webpackage['package_two_marketplace_kr'];?>Kr</span>
+<span id="second_market_euro" class="text">(<?=$webpackage['package_two_marketplace_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_two_marketplace_kr'];?>" class="editbox" id="second_market_kr_" />
+<input type="text" value="<?=$webpackage['package_two_marketplace_euro'];?>" class="editbox" id="second_market_euro_" /> 
+                          </td>
+                          <td class="edit_td">
+<span id="third_market_kr" class="text"><?=$webpackage['package_three_marketplace_kr'];?>Kr</span>
+<span id="third_market_euro" class="text">(<?=$webpackage['package_three_marketplace_euro'];?>Euro)</span>
+<input type="text" value="<?=$webpackage['package_three_marketplace_kr'];?>" class="editbox" id="third_market_kr_" />
+<input type="text" value="<?=$webpackage['package_three_marketplace_euro'];?>" class="editbox" id="third_market_euro_" /> 
+                          </td>
+                        </tr>                    
+                               
+                        <tr id="5" class="edit_tr">
+                          <td width="31%" style="background:#ff5d5e; color:#FFF;"><strong>Specification</strong></td>
+                          <td class="edit_td" width="25%"  style="background:#ff5d5e;  color:#FFF;">
+                            <strong>
+<span id="pkg_one_name" class="text"><?=$webpackage['package_one_name'];?></span>
+<input type="text" value="<?=$webpackage['package_one_name'];?>" class="editbox" id="pkg_one_name_" /> 
+                            </strong>
+                          </td>
+                          <td class="edit_td" width="20%"  style="background:#ff5d5e;  color:#FFF;">
+                            <strong>
+<span id="pkg_two_name" class="text"><?=$webpackage['package_two_name'];?></span>
+<input type="text" value="<?=$webpackage['package_two_name'];?>" class="editbox" id="pkg_two_name_" />                                 
+                            </strong>
+                          </td>
+                          <td class="edit_td" style="background:#ff5d5e;  color:#FFF;">
+                            <strong>
+<span id="pkg_three_name" class="text"><?=$webpackage['package_three_name'];?></span>
+<input type="text" value="<?=$webpackage['package_three_name'];?>" class="editbox" id="pkg_three_name_" /> 
+                            </strong>
+                          </td>
+                        </tr>
+                     <?php foreach($specifications as $specification){?>
+                        <tr id="<?=$specification['id'];?>" class="edit_tr2">
+                          <td class="edit_td">
+<span id="specification<?=$specification['id'];?>" class="text"><?=$specification['pkg_specification'];?></span>
+<input type="text" value="<?=$specification['pkg_specification'];?>" class="editbox" id="specification_<?=$specification['id'];?>" />                            
+
+                          </td>
+                          <td class="edit_td">
+<span id="package_one<?=$specification['id'];?>" class="text"><?=$specification['package_one'];?></span>
+<input type="text" value="<?=$specification['package_one'];?>" class="editbox" id="package_one_<?=$specification['id'];?>" />                           
+                          </td>
+                          <td class="edit_td">
+<span id="package_two<?=$specification['id'];?>" class="text"><?=$specification['package_two'];?></span>
+<input type="text" value="<?=$specification['package_two'];?>" class="editbox" id="package_two_<?=$specification['id'];?>" /> 
+                          </td>
+                          <td class="edit_td">
+<span id="package_three<?=$specification['id'];?>" class="text"><?=$specification['package_three'];?></span>
+<input type="text" value="<?=$specification['package_three'];?>" class="editbox" id="package_three_<?=$specification['id'];?>" /> 
+                          </td>
+                        </tr>
+                        
+                     <?php }?>
+                     
+              </table>
+        </div>
+        </div>
+    </div>
+       

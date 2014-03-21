@@ -1,0 +1,94 @@
+<script type="text/javascript">
+
+    
+    $(document).ready(function() {
+        showTable();
+        
+
+    });
+    
+    function showTable()
+    {
+        $.ajax({
+
+            type:"POST",
+            url:"/admin/languages/ajaxAdminList",
+            cache:false,
+            data:{},
+            dataType:"html",
+            success:function(data)
+            {
+                $("#ajx_table").html(data);
+            }
+        });
+    }
+   
+    //Status off
+    $('.ston').live('click',function()
+    {
+        var offId = $(this).attr('id'); 
+        $.ajax({
+            type:"POST",
+            url:"/admin/languages/status",
+            cache:false,
+            data:{ offId:offId },
+            dataType:"html",
+            success:function(data)
+            {
+                $("#msg").html(data);
+                showTable();
+            }
+        });
+
+    });
+
+    //Status On
+    $('.stof').live('click',function()
+    {
+        var onId = $(this).attr('id'); 
+        $.ajax({
+            type:"POST",
+            url:"/admin/languages/status",
+            cache:false,
+            data:{ onId:onId },
+            dataType:"html",
+            success:function(data)
+            {
+                $("#msg").html(data);
+                showTable();
+            }
+        });
+
+    });
+
+</script>
+<style>
+    .del{cursor:pointer;}.ston{cursor:pointer;}.stof{cursor:pointer;}
+</style>
+
+   <div class="row-fluid">
+        <div class="span12" style="min-height:400px;">
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div id="msg" style="font-size:12px; color:red; text-align:center;">
+                        <?php
+                            if(count($flashMessages))
+                            {
+                                foreach ($flashMessages as $msg)
+                                {
+                                    echo $msg.'</blink><br>';   
+                                }   
+                            }
+                        ?>
+                    </div>
+                    <div id="" style="font-size:16px; text-align:center;">
+                        Current Language 
+                    </div>
+                    
+                    <div class="pull-right"><span class="badge badge-info"></span>
+                </div>
+            </div>
+            <div id="ajx_table"></div>
+        
+    </div>
+</div>

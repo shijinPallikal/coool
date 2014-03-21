@@ -1,0 +1,83 @@
+<script type="text/javascript" src="http://3xcoder.com/js/webservice/zacrisson.js"></script>
+<script type="text/javascript" src="http://3xcoder.com/js/webservice/jquery.loadmask.min.js"></script>
+
+<link href="http://3xcoder.com/css/webservice/zacrisson.css" rel="stylesheet" type="text/css"></link>
+<link href="http://3xcoder.com/css/webservice/jquery.loadmask.css" rel="stylesheet" type="text/css"></link>
+<link href="http://3xcoder.com/css/webservice/tree.css" rel="stylesheet" type="text/css"></link>
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+      <?php
+                foreach ($listMenuDatasImage as $key => $value)
+                {
+
+                    if($value['image']!= '')
+                    {
+                    ?>
+                        <img src="/images/products/menu/<?php echo $value['image'];?>" class="img-responsive"/>
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <img src="/images/photos/suprt_bnr.jpg" class="img-responsive">
+                    <?php
+                    }
+                }
+        ?>
+        
+      
+      
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+
+<!-- content area -->
+
+<div class="content blog">
+  <div class="container_product">
+    <div class="row">
+      <div class="col-md-12" style="">  
+               <div id="xcontainer" style="min-height:200px;"></div>
+      </div>
+    </div>
+  <!-- row ends -->
+ </div>
+ <!-- container ends -->
+</div>
+<!-- content blog ends -->
+<script type="text/javascript">
+     $(document).ready(function() {  
+      var orderStatus = getURLParameter(document.URL); 
+     // alert(orderStatus);     
+      $('#xcontainer').loadPackages({
+          config:{
+              height    : 'auto',
+              width     : 50,
+              bgColor   : '#005dff',
+              source    : 'xcontainer'              
+          },          
+          app: {
+             //rootURL: 'http://testkernew.co.in',
+              rootURL:'http://3xcoder.com',
+              agentURL: 'http://www.cooolwebsite.com/ourProduct/1',
+              userCode:'dhye59e2ga',
+              page:1,
+              projectPackageCategoryId: '0',
+              language:'en',
+              currency:'EUR',
+              orderStatus:orderStatus
+          },
+          complete  : function(ret) {  
+               //console.log(ret);
+          }
+       });            
+   });
+</script>

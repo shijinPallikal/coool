@@ -1,0 +1,110 @@
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+                    <?php
+                     $first=true;
+                     foreach ($listMenuDataImageServices as $key => $value) {  
+                    
+                        if($value['image']!=''){  
+                            if($first){
+                    ?>
+                                <img src="<?php echo $this->basePath().'/images/products/menu/'.$value['image'];?>" class="img-responsive" />                      
+                       <?php
+                                $first= false;
+                            }
+                       }else{
+                       ?>
+                               <img src="<?php  echo $this->basePath().'/images/photos/paket_bnr.jpg';?>" class="img-responsive">
+                   <?php
+                       }
+                    }
+                   ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+
+<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            		<div class="posts">
+                		<div class="tags">
+                                 <a href="<?=$this->basePath().'/websitePackage';?>" <?php if($currPageSub==$this->basePath().'/websitePackage') { ?> class="active" <?php } ?>>Website Packages</a> 
+                                 <a href="<?=$this->basePath().'/static/responsive';?>"<?php if($currPageSub=='responsive.php' || $currPageSub=='responsive2.php' ||
+								  $currPageSub=='responsive3.php' || $currPageSub=='responsive4.php' || $currPageSub=='responsive5.php' || $currPageSub=='responsive6.php' || 
+								  $currPageSub=='responsive7.php' || $currPageSub=='responsive8.php' ) {?> class="active"  <?php } ?>>Responsive Samples</a> 
+                                 <a href="<?=$this->basePath().'/static/whyresponsive';?>" <?php if($currPageSub=='whyresponsive.php') { ?> class="active" <?php } ?>>Why You Should Go Responsive</a> 
+                                 <a href="<?=$this->basePath().'/ecommerce';?>"       <?php if($currPageSub=='ecommerce.php')       { ?> class="active"  <?php } ?>>Ecommerce</a> 
+                                 <a href="<?=$this->basePath().'/ourProduct';?>"        <?php if($currPageSub=='products.php')        { ?> class="active"  <?php } ?>>Our Products</a> 
+                                 <!-- <a href="otherservices.php"   <?php //if($currPageSub=='otherservices.php')   { ?> class="active"   <?php// } ?>>Other Services</a> -->
+<!--                                 <a href="website_tools.php"   <?php //if($currPageSub=='website_tools.php')   { ?> class="active"  <?php //} ?>>Included Website Tools</a>-->
+				</div>
+					</div>
+       		 </div>
+    	</div>
+	</div>
+
+<!-- content area -->
+
+<div class="content blog">
+  <div class="container">
+    <div class="row">   
+	<!-- Sidebar -->
+   <!-- Sidebar -->
+    <div class="col-md-3">
+                  <div class="sidey">
+                     <ul class="nav">
+                         <?php foreach($servicePage as $value){?>
+                          <!--onclick="javascript:contentList('<? //=$value['id'];?>')"-->
+                         <li><a href="<?php echo $this->basePath().'/services/'.$serviceId.'/'.$value['id'];?>"><?=$value['page_name'];?></a></li>
+                         <?php }?>                           
+                     </ul>
+                  </div>
+    </div>
+<!-- Sidebar ends -->                                                
+<!-- Sidebar ends -->                                                
+
+     <!-- right column -->
+     
+
+<div class="col-md-9">
+<div class="posts">
+<div class="entry">
+    <h2><a href="#"><?=$pageName;?></a></h2>
+
+<hr />
+<div class="content about-one">
+<div class="container">
+<div class="row">
+<!--/* content come here */-->
+
+<?php foreach($serPageContent as $content) echo $content['content_description'];?>
+
+<!--/* content come here */-->
+
+<div class="clearfix">&nbsp;</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+	
+	<!-- right column -->
+  </div>
+  <!-- row ends -->
+ </div>
+ <!-- container ends -->
+</div>
+<!-- content blog ends -->
+
+
+
+
+    

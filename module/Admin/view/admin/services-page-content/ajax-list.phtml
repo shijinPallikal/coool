@@ -1,0 +1,84 @@
+<script language="text/javascript">
+    function delSer(passId){
+        var retVal=confirm('Delete...Are you sure?');
+        if(retVal==true){           
+            $.ajax({
+            type:'POST',
+            url :'<?php echo $this->basePath().'/admin/servicespagecontent/delete';?>',
+            data:{delId:passId},
+            success:function(data){
+                //alert(data);
+             }
+            })
+        }
+        else{
+            location.redirect();
+        }
+        
+    }
+</script>
+
+
+<div class="block-content collapse in"> 
+    <?php $cnt= count($listPageContent);
+            if($cnt==0){
+                echo 'No Result Found';
+            }
+            else{
+           
+    ?>
+              <table class="table table-striped">
+                     
+                   <thead>
+                        <tr>
+                            <th>Id</th>                         
+                            <th>Content</th>
+                            <th>Edit</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                    
+                    foreach ($listPageContent as $key => $value)
+                    {
+                       
+                        ?>                    
+    	                <tr>
+    	                    <td><?php echo $key+1;?></td>
+                                                     <td>
+                                 <?php echo stripslashes($value['content_description']);?>
+                            </td>
+    	                
+<!--    	            <td><?php 
+                            
+                                //if($value['status'] == 1)
+                                //{
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php //echo $value['id']; ?>" class="ston">
+                                <?php
+                               // }
+                               // else 
+                               // {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php //echo $value['id']; ?>" class="stof">
+                               <?php
+                               // }
+                               ?>
+                            </td>-->
+    	                    
+    	                   <td>
+                               <a href="<?php echo $this->basePath().'/admin/servicespagecontent/'.$serviceId.'/'.$pageId.'/edit/'.$value['id'];?>" style="text-decoration:none;"><img src="/images/edit.png" border="0" width="20" height="20"></a>
+    	                   </td>
+                           <td>
+                                <img onclick="delSer(<?php echo $value['id']; ?>)" src="/images/delete.png" id="" border="0" width="20" height="20" class="del" />
+                                <!--href="/admin/otherservices/delete/<?php //echo $value['id']; ?>"-->
+                           </td>
+    	                </tr>
+                        <?php
+                    }
+                    ?>
+               </tbody>
+            </table>
+            <?php }?>
+        </div>

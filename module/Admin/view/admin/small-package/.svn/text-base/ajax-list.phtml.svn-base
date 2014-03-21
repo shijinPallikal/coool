@@ -1,0 +1,367 @@
+<div class="block-content collapse in">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <!--<th>Shown date</th>-->
+                <th>Big Image</th>
+                <th>Image</th>
+            
+                <th style="text-align:center;">Status</th>
+                <!--<th style="text-align:center;">featured</th>
+                <th style="text-align:center;">Home featured</th>-->
+                <th style="text-align:center;" colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr><td colspan="9" style="background-color:yellow;"><h4>Area 1</h4></td></tr>
+            <?php
+            //echo count($listAllSmallPackage1); exit;
+            if(count($listAllSmallPackage1) != '')
+            { 
+                foreach ($listAllSmallPackage1 as $key => $value)
+                {
+                   ?>
+                       
+                        <tr>
+                            <td><?php echo $value['id'];?></td>
+                            <td>
+                                <?php echo $value['product_title'];?>&nbsp;
+                                </td>
+                            <!--<td>
+                                <div style="width:100px; float: left;">
+                                <?php 
+                                    foreach ($listAllSmallPackageDatesArea1 as $key => $dates)
+                                    {
+                                    ?>
+                                         <?php echo $dates['offer_date'];?>
+                                    <?php
+                                    }
+                                   ?>
+                                </div>
+                            </td>-->
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value['image1'];?>" width="60" height="50" border="0">              
+                            </td>
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            <td style="text-align:center;">
+                                <?php 
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                <?php
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="/admin/smallPackage/edit/<?php echo $value['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                            </td>
+                            <td>
+                                <img src="/images/delete.gif" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del">
+                            </td>
+                        </tr>
+                        <?php
+                }
+            }
+            else
+            {
+            ?>
+                    <tr><td colspan="5"><?php echo "Oops No Package added Yet.."; ?></td></tr>
+            <?php    
+            }
+            
+            if(count($listAllSmallPackage11) != '')
+            {
+             
+                foreach ($listAllSmallPackage11 as $key => $value11)
+                {
+                        
+                        ?>
+                         <tr><td colspan="9"><a href="/admin/smallPackage/add" style="text-decoration:none; float:right; margin-bottpm:8px;"><img src="/images/plus.png" width="" height="" border="0"></a></td></tr>
+                        <tr><td colspan="9"><h6>Agent Default Package</h6></td></tr>
+                        <tr>
+                            <td><?php echo $value11['id'];?></td>
+                            <td>
+                                <?php echo $value11['product_title'];?>&nbsp;
+                                </td>
+                            <!--<td>
+                                <div style="width:100px; float: left;">
+                                    <?php echo $value11['offer_date'];?>
+                                </div>
+                            </td>-->
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value11['image1'];?>" width="60" height="50" border="0">              
+                            </td>
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value11['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            <td style="text-align:center;">
+                                <?php 
+                                if($value11['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value11['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value11['id']; ?>" class="stof">
+                                <?php
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="/admin/smallPackage/edit/<?php echo $value11['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                            </td>
+                            <td>
+                                <img src="/images/delete.gif" id="<?php echo $value11['id']; ?>" border="0" width="20" height="20" class="del">
+                            </td>
+                        </tr>
+                        <?php
+
+                }
+            }
+            else
+            {
+            ?>
+                    <tr><td colspan="5"><?php echo "Oops No default Package Added Yet.."; ?></td></tr>
+            <?php    
+            }
+            
+            if(count($listAllAdminSmallPackage) != '')
+            {
+             
+                foreach ($listAllAdminSmallPackage as $key => $value111)
+                {
+                        
+                        ?>
+                         <tr><td colspan="9"><a href="/admin/smallPackage/add" style="text-decoration:none; float:right; margin-bottpm:8px;"><img src="/images/plus.png" width="" height="" border="0"></a></td></tr>
+                        <tr><td colspan="9"><h6>Admin Default Package</h6></td></tr>
+                        <tr>
+                            <td><?php echo $value111['id'];?></td>
+                            <td>
+                                <?php echo $value111['product_title'];?>&nbsp;
+                                </td>
+                            <!--<td>
+                                <div style="width:100px; float: left;">
+                                    <?php echo $value111['offer_date'];?>
+                                </div>
+                            </td>-->
+                            <td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $value111['image1'];?>" width="60" height="50" border="0">              
+                            </td>
+                            <td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $value111['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            <!--<td style="text-align:center;">
+                                <?php 
+                                if($value111['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value111['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value111['id']; ?>" class="stof">
+                                <?php
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="/admin/smallPackage/edit/<?php echo $value111['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                            </td>
+                            <td>
+                                <img src="/images/delete.gif" id="<?php echo $value111['id']; ?>" border="0" width="20" height="20" class="del">
+                            </td>-->
+                        </tr>
+                        <?php
+
+                }
+            }
+            else
+            {
+            ?>
+                    <tr><td colspan="5"><?php echo "Oops No default Package Added Yet.."; ?></td></tr>
+            <?php    
+            }
+            ?>
+            
+            <tr><td colspan="9" style="background-color:yellow;"><h4>Area 2</h4></td></tr>
+            <?php
+            if(count($listAllSmallPackage2) != '')
+            {
+                foreach ($listAllSmallPackage2 as $key => $value)
+                {
+                    ?>
+                        
+                        <tr>
+                            <td><?php echo $value['id'];?></td>
+                            <td>
+                                <?php echo $value['product_title'];?>&nbsp;
+                                </td>
+                            <!--<td>
+                                <div style="width:100px; float: left;">
+                                   <?php 
+                                    foreach ($listAllSmallPackageDatesArea2 as $key => $dates)
+                                    {
+                                    ?>
+                                         <?php //echo $dates['offer_date'];?>
+                                    <?php
+                                    }
+                                   ?>
+                                </div>
+                            </td>-->
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value['image1'];?>" width="60" height="50" border="0">              
+                            </td>
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            <td style="text-align:center;">
+                                <?php 
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                <?php
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="/admin/smallPackage/edit/<?php echo $value['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                            </td>
+                            <td>
+                                <img src="/images/delete.gif" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del">
+                            </td>
+                        </tr>
+                        <?php
+                }
+            }
+            else
+            {
+            ?>
+                    <tr><td colspan="5"><?php echo "Oops No Package Added Yet.."; ?></td></tr>
+            <?php    
+            }
+            if(count($listAllSmallPackage22) != '')
+            {
+                foreach ($listAllSmallPackage22 as $key => $value)
+                {
+                    ?>
+                         <tr><td colspan="9"><a href="/admin/smallPackage/add" style="text-decoration:none; float:right; margin-bottpm:8px;"><img src="/images/plus.png" width="" height="" border="0"></a></td></tr>
+                        <tr><td colspan="9"><h6>Default Package</h6></td></tr>
+                        <tr>
+                            <td><?php echo $value['id'];?></td>
+                            <td><?php echo $value['product_title'];?>&nbsp;</td>
+                            <td>
+                                <div style="width:100px; float: left;">
+                                    <?php echo $value['offer_date'];?>
+                                </div>
+                            </td>
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value['image1'];?>" width="60" height="50" border="0">              
+                            </td>
+                            <td>
+                                <img src="/images/products/small_package/<?php echo $value['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            <td style="text-align:center;">
+                                <?php 
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                <?php
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="/admin/smallPackage/edit/<?php echo $value['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                            </td>
+                            <td>
+                                <img src="/images/delete.gif" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del">
+                            </td>
+                        </tr>
+                        <?php                
+                }
+            }
+            else
+            {
+            ?>
+                    <tr><td colspan="5"><?php echo "Oops No default Package Added Yet.."; ?></td></tr>
+            <?php    
+            }
+            ?>
+             <tr><td colspan="9"><a href="/admin/smallPackage/add" style="text-decoration:none; float:right; margin-bottpm:8px;"><img src="/images/plus.png" width="" height="" border="0"></a></td></tr>
+             <?php
+            if(count($listAllAdminSmallPackage2) != '')
+            {
+                foreach ($listAllAdminSmallPackage2 as $key => $valueArea2)
+                {
+                    ?>
+                         
+                        <tr><td colspan="9"><h6>Admin Default Package</h6></td></tr>
+                        <tr>
+                            <td><?php echo $valueArea2['id'];?></td>
+                            <td><?php echo $valueArea2['product_title'];?>&nbsp;</td>
+                            <td>
+                                <div style="width:100px; float: left;">
+                                    <?php echo $valueArea2['offer_date'];?>
+                                </div>
+                            </td>
+                            <td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $valueArea2['image1'];?>" width="60" height="50" border="0">              
+                            </td>
+                            <td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $valueArea2['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            
+                        </tr>
+                        <?php                
+                }
+            }
+            else
+            {
+            ?>
+                    <tr><td colspan="5"><?php echo "Oops No default Package Added Yet.."; ?></td></tr>
+            <?php    
+            }
+            ?>
+        </tbody>
+    </table>
+</div>

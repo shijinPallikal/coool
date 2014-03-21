@@ -1,0 +1,50 @@
+  <div class="block-content collapse in">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Country</th>
+                            <th>Status</th>
+                            <th colspan="2" style="text-align:center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $cnt= count($listCountryData);
+                    foreach ($listCountryData as $key => $value)
+                    {
+          
+                        ?>                         
+    	                <tr>
+    	                	<td><?php echo $value['id'];?></td>
+                            <td><?php echo $value['country'];?></td>
+    	                    <td><?php 
+                            
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                    ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                    <?php
+                                }
+                                ?>
+                            </td>
+    	                    
+    	                    <td>
+    	                    	<a href="/admin/country/edit/<?php echo $value['id']; ?>" style="text-decoration:none;"><img src="/images/edit.png" border="0" width="20" height="20"></a>
+    	                    </td>
+                            <td>
+                                <img src="/images/delete.png" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del" />
+                            </td>
+    	                </tr>
+                        <?php
+                    }
+                    ?>
+               </tbody>
+            </table>
+        </div>

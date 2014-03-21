@@ -1,0 +1,70 @@
+  <div class="block-content collapse in">
+                <table class="table table-striped">
+                    
+                    <thead>
+                    
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Sub Title</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if(count($listAllPagesData) != '')
+                        {
+                        
+                            foreach ($listAllPagesData as $key => $value)
+                            {
+                  
+                                ?>                         
+            	                <tr>
+            	                	<td><?php echo $value['id'];?></td>
+                                    <td><?php
+                                        $s=strlen($value['title']);
+                                        if($s >20)
+                                        {
+                                            echo substr($value['title'],0,20).".....";
+                                        }
+                                        else
+                                        {
+                                            echo $value['title'];
+                                        }
+                                        ?>
+
+                                    </td>
+                                    <td><?php echo $value['sub_title'];?></td>
+            	                    <td><?php 
+                                    
+                                        if($value['status'] == 1)
+                                        {
+                                        ?>
+                                            <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                        <?php
+                                        }
+                                        else 
+                                        {
+                                            ?>
+                                            <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                            <?php
+                                        }
+                                        ?>
+                                    </td>
+            	                    
+            	                    <td>
+            	                    	<a href="/admin/pages/edit/<?php echo $value['id']; ?>" style="text-decoration:none;"><img src="/images/edit.png" border="0" width="20" height="20"></a>
+            	                    </td>
+            	                </tr>
+                            <?php
+                            }
+                        }
+                        else
+                        {
+                            echo "Oops no records founds";
+                        }
+                        ?>
+                        </tbody>
+            </table>
+        </div>

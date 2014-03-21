@@ -1,0 +1,42 @@
+<div class="block-content collapse in">
+    <table class="table table-striped">
+        <thead>
+            
+        </thead>
+        <tbody>
+            <?php
+            if(count($logoDatas) != '')
+            { 
+                foreach ($logoDatas as $key => $value)
+                {
+                    
+                ?>
+                    <tr>
+                        <td>Company name management</td>
+                        
+                        <td style="text-align:center;">
+                            <?php 
+                            if($value['status'] == 1)
+                            {
+                            ?>
+                                <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                            <?php
+                            }
+                            else 
+                            {
+                            ?>
+                                <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                            <?php
+                            }
+                            ?>
+                        </td>
+
+                    </tr>
+                    <?php
+                }
+            }
+            
+            ?>
+        </tbody>
+    </table>
+</div>

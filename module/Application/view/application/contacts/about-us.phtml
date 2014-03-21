@@ -1,0 +1,256 @@
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script>
+//var $j = jQuery.noConflict();
+</script>
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        var options = {  
+            url:        'contacts/email', 
+            dataType: 'html',
+            beforeSubmit: function()
+            { 
+               // $("#emsg").html('<img src="/images/photos/loading.gif" width="20" height="20" >');
+            },
+            
+            success:    function(data) { 
+           
+                $('#msg').html(data);
+
+                $('#msg').delay(2000).fadeOut();
+                
+               $("#contactus_form")[0].reset();
+            } 
+        }; 
+   
+        $('#contactus_form').ajaxForm(options);
+    });
+</script>
+<style type="text/css">
+    .widget111 
+    {
+        background-color:#FFFFFF;
+        background-position:initial initial;
+        background-repeat:initial initial;
+        border:1px solid #EEEEEE;
+        margin-bottom:10px;
+        padding:8px 10px;
+
+        border-top-color:#FF5D5E;
+        border-top-style:solid;
+        border-top-width:1px;
+        height: 118px;
+    }
+
+</style>
+
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <?php
+                foreach ($listMenuDatasImageContacts as $key => $value)
+                {
+                    if($value['image']!= '')
+                    {
+                    ?>
+                        <img src="/images/products/menu/<?php echo $value['image'];?>" class="img-responsive"/>
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <img src="/images/photos/paket_bnr.jpg" class="img-responsive">
+                    <?php
+                    }
+                }
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+
+<!-- sublink starts -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="posts">
+                <div class="tags">
+                    <a href="<?=$this->basePath().'/ecommerce';?>" <?php if($currPageSub==$this->basePath().'/websitePackage') { ?> class="active" <?php } ?>>Ecommerce</a> 
+                    
+                    <a href="<?=$this->basePath().'/static/responsive';?>"<?php if($currPageSub=='responsive.php' || $currPageSub=='responsive2.php' ||
+								      $currPageSub=='responsive3.php' || $currPageSub=='responsive4.php' || $currPageSub=='responsive5.php' || $currPageSub=='responsive6.php' || 
+								      $currPageSub=='responsive7.php' || $currPageSub=='responsive8.php' ) {?> class="active"  <?php } ?>>Responsive Samples</a> 
+                    
+                    <a href="<?=$this->basePath().'/static/whyresponsive';?>" <?php if($currPageSub=='whyresponsive.php') { ?> class="active" <?php } ?>>Why You Should Go Responsive</a> 
+                    <a href="<?=$this->basePath().'/services/1';?>"       <?php if($currPageSub=='ecommerce.php')       { ?> class="active"  <?php } ?>>Service</a> 
+                    
+                    <a href="<?=$this->basePath().'/ourProduct';?>"        <?php if($currPageSub=='products.php')        { ?> class="active"  <?php } ?>>Our Products</a> 
+                    
+                    <!-- <a href="otherservices.php"   <?php if($currPageSub=='otherservices.php')   { ?> class="active"   <?php } ?>>Other Services</a> -->
+                    <!--<a href="website_tools.php"   <?php //if($currPageSub=='website_tools.php')   { ?> class="active"  <?php //} ?>>Included Website Tools</a>-->
+						    </div>
+			      </div>
+       	</div>
+    </div>
+</div>
+<!-- sublink ends -->
+
+<!-- content area -->
+
+<?php
+foreach ($listPagesDatas as $key => $value)
+{
+    $tit[]= $value['title'];
+    $subtit[]= $value['sub_title'];
+    $status[]= $value['status'];
+    $discrip[]= $value['description'];
+    $url[]= $value['url'];
+}
+?>
+
+<div class="content blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">  
+                <div class="posts">
+                    <div class="entry">
+                        <h2><a href="#"><?php echo $tit[1]?></a></h2>
+                        <p>
+                           <?php echo substr($discrip[1], 0,136);?>
+                        </p><br>
+                
+                        <p>
+                            <?php echo substr($discrip[1], 136,188);?>
+                        </p><br>
+                
+                        <p>
+                            <?php echo substr($discrip[1], 321,400);?>
+                        </p><br>
+                 
+                        <p>
+                            <?php echo substr($discrip[1], 721,700);?>
+                        </p>
+                  
+                        <a href=""><?php echo $url[1] ;?></a>
+                        <h4><?php echo $subtit[1]?></h4>
+                    </div>
+                <div class="clearfix"></div>
+            </div>
+        </div> 
+
+	      <!-- first column ends -->
+	      <div class="col-md-4">
+		        <!-- Sidebar -->
+		        <div class="sidebar">
+			          <!-- Widget -->
+			          <div class="widget">
+				            <h4>Yes, please contact and tell Us more:</h4>
+				
+                    <div id="emsg" style="font-size:12px; float:right; color:red;"></div>
+                        <div id="msg" style="font-size:12px; float:right; color:red;"></div>
+                        <form class="form-inline" role="form" name="contactus_form" id="contactus_form" method="post" action="contacts" >
+                            <div class="form-group">
+                                <input type="text" class="form-control mar_top" id="company" name="company" placeholder="Company Name..." required>
+                                <input type="text" class="form-control mar_top" id="cp" name="cp" placeholder="Contact Person..." required>
+                                <input type="text" class="form-control mar_top" id="phone" name="phone" placeholder="Phone Number..." required>
+                                <input type="email" class="form-control mar_top" id="email" name="email" placeholder="Email..." required>
+                            </div>
+                            <h5>Iam Most Interested in</h5>
+                            <div class="checkbox" >
+                                <label>
+                                    <input type="checkbox" id="ch1" name="ch1" value="Homepage"> Homepage
+                                </label>
+                            </div>
+          
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch2" name="ch2" value="Homepage Mobile"> Homepage Mobile
+                                </label>
+                            </div>
+                   
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch3" name="ch3" value="Homepage Responsive"> Homepage Responsive
+                                </label>
+                            </div>
+                    
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch4" name="ch4" value="E-Commerse"> E-Commerse
+                                </label>
+                            </div>
+          
+                            <div class="selectbox">
+                                <select class="form-control" id="sel" name="sel">
+                                    <option value="">Please select..</option>
+                                    <option value="CMS">CMS</option>
+                                    <option value="Wordpress">Wordpress</option>
+                                </select>
+                            </div>                                  
+
+                            <button type="submit"  class="btn btn-danger mar_top">Send</button>
+                        </form>
+			              </div>
+            
+			
+                        <?php
+                        $c= count($listContactusDatas);
+                        foreach ($listContactusDatas as $key => $value)
+                        {
+                          $title[]= $value['title'];
+                          $dis[]= $value['description'];
+                          $country[]= $value['country'];
+                          $phone[]= $value['phone'];
+                          $service[]= $value['service_email'];
+                         
+                        }
+                        ?>
+                        <div class="widget111">
+                        <h4>Contact Us</h4>
+                        <?php
+                        for($i= 0; $i<= $c-1; $i++)
+                        {
+                            ?>
+                            <div style='width:200px;float:left;'>
+                                <span style='width:55px; float:left;'>
+                                    <?php
+                                        if($country[$i] == "Sweden")
+                                        {
+                                          echo "Sverige";
+                                        }
+                                        else
+                                        {
+                                          echo ucfirst($country[$i]);
+                                        }
+                                    ?>
+                                </span>
+                                <span style='font-size:12px;float:left; width:10px;'>:</span>
+                                <span style='width:90px; float:left;'><?php echo $phone[$i] ?></span>
+                            </div>
+                        <?php
+                        }
+                        ?>
+
+                    </div> 
+                    <div class="widget">
+				                <h4>We will help you succeed on the Web</h4>
+                        <p>We create a website for your needs at a good price.</p>
+                        <p class="bold">Get a great looking website today!</p>
+			              </div>
+                </div>
+                <!-- Sidebar ends -->                                                
+	          </div>
+            <!-- colmd4 ends -->
+        </div>
+        <!-- row ends -->
+    </div>
+    <!-- container ends -->
+</div>
+<!-- content blog ends -->

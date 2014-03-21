@@ -1,0 +1,104 @@
+<script type="text/javascript" src="js/jquery-v1.7.1.js"></script>
+  <script type="text/javascript">
+$(function() {
+
+
+	$('#iphone').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'iphone');
+		$('#device-detail').attr('class', 'iphone-detail');
+	});
+
+	$('#iphone-l').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'iphone-l');
+		$('#device-detail').attr('class', 'iphone-l-detail');
+	});
+
+	$('#ipad').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'ipad');
+		$('#device-detail').attr('class', 'ipad-detail');
+	});
+
+	$('#ipad-l').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'ipad-l');
+		$('#device-detail').attr('class', 'ipad-l-detail');
+	});
+
+	$('#desktop').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'desktop');
+		$('#device-detail').attr('class', 'desktop-detail');
+	});
+
+	///get url from form field
+	function updateframe() {
+      var url = $("#getURL").val();
+      //alert(url);
+
+      /// check for http
+      if ($("#getURL").val().match(/^http/)) {
+            $('#displayframe').attr('src', url);
+        }
+        else{
+        	validURL = 'http://' + url;
+        	//alert(validURL);
+        	$('#displayframe').attr('src', validURL);
+        	return false;
+        }
+
+      }
+
+    /// form actions
+    $("#button").click(function() {
+		updateframe();
+  		RandomLink();
+	});
+
+	$('#getURL').keypress(function(e){
+      if(e.which == 13){
+       updateframe();
+       }
+      });
+
+    $(function() {
+    $('input[type=text]').focus(function() {
+      $(this).val('')
+      });
+
+ });
+
+
+    //// Check for url in url
+    var givenURL = (RegExp('url=' + '(.+?)(&|$)').exec(location.search)||[,null])[1];
+    if (givenURL == null){
+      ////set-up random url
+      base = "http://www.";
+			/* respo_2/index.html resp-interior/index.html var urls = ["bbc.co.uk/bbcone","hicksdesign.co.uk","anderssonwise.com","forefathersgroup.com","jamus.co.uk","bostonglobe.com"];*/
+			var urls = ["<?php echo 'cooolwebsite.com/coolwebsite_old/'.$path;?>"];
+			var randomURL = urls[Math.floor(Math.random() * urls.length)];
+			var randomhttpURL = (base + randomURL);
+			$('#displayframe').attr('src', randomhttpURL);
+          	$('#getURL').attr('value', randomURL);
+			
+			updateframe();
+	  		RandomLink();
+    }else{
+      $('#getURL').attr('value',givenURL );
+      $('#displayframe').attr('src',givenURL);
+    }
+
+
+});
+</script>
+<div id="viewport" class="iphone">
+             <iframe id="displayframe" name="displayframe" height="480" width="320" src="#"></iframe>
+
+</div>

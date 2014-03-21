@@ -1,0 +1,220 @@
+<script src="/js/jquery-1.9.1.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/cool.js"></script>
+
+<script type="text/javascript" src="/js/jquery.validate.js"></script> 
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<head>
+<script>
+	$(document).ready(function(){
+
+		//Date Picker
+		$(function() {
+			$( "#finishDate").datepicker({
+					changeMonth: true,
+					changeYear: true
+			});
+			
+			$( "#nextCall").datepicker({
+				changeMonth: true,
+				changeYear: true
+			});
+		});
+
+		
+
+		//Form Validation
+		$('#FormSubmit').click(function(){
+        	if($("#firstName").val()==='')
+            {
+            	alert("first Name please!");
+                return false;
+            }
+            if($("#lastName").val()==='')
+            {
+            	alert("Last Name please!");
+                return false;
+            }
+            if($("#familyName").val()==='')
+            {
+            	alert("Family Name please!");
+                return false;
+            }
+
+            if($("#phone").val() ==='')
+            {
+            	alert("Phone Num please!");
+                return false;
+            }
+            var emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            var emailToVal = $("#email").val();
+            if (emailToVal == '')
+            {
+                alert('email address Please');
+                return false;
+            } else if(!emailReg.test(emailToVal))
+            {
+                alert('please enter the correct email address');
+                return false;
+            }
+            if($("#productType").val() ==='')
+            {
+            	alert("Product Type please!");
+                return false;
+            }
+            if($("#problemType").val() ==='')
+            {
+            	alert("Problem Type please!");
+                return false;
+            }
+            if($("#complaint").val() ==='')
+            {
+            	alert("Customer complaint please!");
+                return false;
+            }
+            if($("#whenDone").val() ==='')
+            {
+            	alert("What do you Done!");
+                return false;
+            }
+            if($("#finishDate").val() ==='')
+            {
+            	alert("Finish date please!");
+                return false;
+            }
+            
+            if($("#nextCall").val() ==='')
+            {
+            	alert("Next Call date please!");
+                return false;
+            }
+            if($("#finishDate")!='' && $("#nextCall").val() !='')
+            {
+            	var d1 = $("#finishDate").val();
+            	var d2 = $("#nextCall").val();
+            	if(d2 > d1)
+            	{
+            		alert("You can't call on this day");
+            		return false;
+            	}
+            }
+            if($("#assingTo").val() ==='')
+            {
+            	alert("Please Assign to One person !");
+                return false;
+            }
+            
+		});
+	});		
+</script>
+</head>
+<form action="" method="post">
+	<table border="0" width="100%">
+		<tr>
+			<td align="center">
+				Service Registration
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td>
+				<table width="60%" style="margin:0 auto;" id="myTable" border="1">
+					<tr>
+						<td align="center" width="30%">First Name</td><td align="center" width="30%"><input type="text" name="firstName" id="firstName"></td>
+					</tr>
+					 <tr id="fn"></tr>
+					<tr>
+						<td align="center" width="30%">Last Name</td><td align="center" width="30%"><input type="text" name="lastName" id="lastName"></td>
+					</tr>
+					<tr>
+						<td align="center" width="30%">Family Name</td><td align="center" width="30%"><input type="text" name="familyName" id="familyName"></td>
+					</tr>
+					<tbody id="phoneDiv">
+						<tr>
+							<td align="center" width="30%">Phone</td><td align="center" width="30%"><input type="text" name="phone[]" id="phone" style="margin-left:14px;"><a href="javascript:void(0);" title="Click here to add more Numbers" onclick="addNewRow('phoneDiv', 'phone',$('#phoneDiv tr').length);" ><img src="../img/plus.png" border="0"></a></td>
+						</tr>
+					</tbody> 
+					<tbody id="emailDiv">
+						<tr>
+							<td align="center" width="30%">Email</td><td align="center" width="30%"><input type="text" name="email[]" id="email" style="margin-left:14px;"><a href="javascript:void(0);" title="Click here to add more mails" onclick="addNewRow('emailDiv', 'email',$('#emailDiv tr').length);" ><img src="../img/plus.png" border="0"></a></td>
+						</tr>
+					</tbody> 
+					<tr>
+						<td align="center" width="30%">Urgency</td><td align="center" width="30%">
+							<select name="problemType" id="problemType" style="width:234px; ">
+								<option value="">Select Please....</option>
+								<option value="urgent">Urgent</option>
+								<option value="normal">Normal</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" width="30%">Type of Product/Problem</td><td align="center" width="30%">
+							<select name="productType" id="productType" style="width:234px; ">
+								<option value="">Type of Product please....</option>
+								<option value="hardware">Hardware</option>
+								<option value="software">Software</option>
+								<option value="printer">Printer</option>
+								<option value="ups">Ups</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" width="30%">Customer Problem</td><td align="center" width="30%">
+							<textarea style="width:234px;height:130px;" name="complaint" id="complaint"></textarea>	
+						</td>
+					</tr>
+					<tr>
+						<td align="center" width="30%">What have been done</td><td align="center" width="30%">
+							<textarea style="width:234px;height:130px;" name="whenDone" id="whenDone"></textarea>	
+						</td>
+					</tr>
+					<tr>
+						<td align="center" width="30%">Finishing Date</td>
+						<td align="center" width="30%"><input type="text" name="finishDate" id="finishDate"></td>
+					</tr>
+					<tr>
+						<td align="center" width="30%">Next Call</td>
+						<td align="center" width="30%"><input type="text" name="nextCall" id="nextCall"></td>
+					</tr>
+					<tr>
+						<td align="center" width="30%">Assign To</td>
+						<td align="center" width="30%">
+							<select name="assignTo" id="assingTo" style="width:234px; ">
+								<option value="">Name please....</option>
+								<option value="Sam">Sam</option>
+								<option value="Shijin">Shijin</option>
+								<option value="Sumesh">Sumesh</option>
+								<option value="Baji">Baji</option>
+							</select>					
+						</td>
+					</tr>
+					<tr>
+						<td align="center" width="30%" colspan="2"><input type="submit"  value="SUBMIT" name="FormSubmit" id="FormSubmit">
+						<input type="button" id="cancel" value="Cancel"></td>	
+					</tr>
+				</table>
+			</td>
+		</tr>
+	
+	
+	</table>
+</form>
+<script type="text/javascript">
+	$("#cancel").click(function()
+	{
+		window.location.href= "<?php echo $this->basePath()?>/service/list";
+	});
+
+</script>

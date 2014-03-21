@@ -1,0 +1,182 @@
+<div class="ecompage-head">
+	<div class="container">
+    	<div class="row">
+      		<div class="col-md-12">
+      			<?php
+      			foreach ($listMenuDatasImage as $key => $value)
+      			{
+      				if($value['image']!= '')
+      				{
+      				?>
+      					<div class="img2"> 
+      						<img src="/images/products/menu/<?php echo $value['image'];?>" />
+      					</div>
+	      			<?php
+	      			}
+	      			else
+	      			{
+	      			?>
+       					<img src="/images/photos/ecome-2.jpg" class="img-responsive"/>
+       				<?php
+       				}
+       			}
+       			?>
+      		</div>
+    	</div>
+  	</div>
+</div>
+
+<!-- banner starts -->
+
+<!-- sublink starts -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        	<div class="posts">
+                 <div class="tags">
+                                    <a href="<?=$this->basePath().'/websitePackage';?>" <?php if($currPageSub==$this->basePath().'/websitePackage') { ?> class="active" <?php } ?>>Website Packages</a> 
+                                 <a href="<?=$this->basePath().'/static/responsive';?>"<?php if($currPageSub=='responsive.php' || $currPageSub=='responsive2.php' ||
+								  $currPageSub=='responsive3.php' || $currPageSub=='responsive4.php' || $currPageSub=='responsive5.php' || $currPageSub=='responsive6.php' || 
+								  $currPageSub=='responsive7.php' || $currPageSub=='responsive8.php' ) {?> class="active"  <?php } ?>>Responsive Samples</a> 
+                                 <a href="<?=$this->basePath().'/static/whyresponsive';?>" <?php if($currPageSub=='whyresponsive.php') { ?> class="active" <?php } ?>>Why You Should Go Responsive</a> 
+                                 <a href="<?=$this->basePath().'/services/1';?>"       <?php if($currPageSub=='ecommerce.php')       { ?> class="active"  <?php } ?>>Service</a> 
+                                 <a href="<?=$this->basePath().'/ourProduct';?>"        <?php if($currPageSub=='products.php')        { ?> class="active"  <?php } ?>>Our Products</a> 
+                                 <!-- <a href="otherservices.php"   <?php if($currPageSub=='otherservices.php')   { ?> class="active"   <?php } ?>>Other Services</a> -->
+<!--                                 <a href="website_tools.php"   <?php //if($currPageSub=='website_tools.php')   { ?> class="active"  <?php //} ?>>Included Website Tools</a>-->
+		</div>
+			</div>
+       	</div>
+    </div>
+</div>
+<!-- sublink ends -->
+
+<!-- content area -->
+
+<div class="content blog">
+	<div class="container">
+    	<div class="row">
+    	<?php
+    	//$image= array();
+    	foreach ($listEcommerceDatas as $key => $value)
+    	{
+
+	  		$image[] = $value["image"];
+	  		$title[] = $value['title'];
+	  		$description[] = $value['description'];
+  		}
+    	?>
+      		<div class="col-md-6">
+				<div class="posts">
+					<div class="entry">
+						<div class="bthumb">
+							<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[0];?>" class="img-responsive"/></a>
+						</div>
+					<div class="ecom_txt">
+                		<h1><?php echo $title[0]; ?></h1>
+						<p><?php echo $description[0]; ?></p>
+					</div>
+				</div>
+                
+                <div class="entry">
+                	<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[2];?>" class="img-responsive"/></a>
+					</div>
+                   
+                   <div class="ecom_txt">
+                		<h1><?php echo $title[2]; ?></h1>
+						<p><?php echo $description[2]; ?></p>
+					</div>
+				</div>
+			<div class="clearfix"></div>
+		</div>
+	</div> 
+                        
+	<div class="col-md-6">
+		<div class="posts ">
+			<div class="entry">
+				<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[1];?>" class="img-responsive"/></a>
+				</div>
+					
+                 <div class="ecom_txt">
+                		<h1><?php echo $title[1]; ?></h1>
+						<p><?php echo $description[1]; ?></p>
+					</div>
+               
+			</div>
+                
+			<div class="entry">
+				<div class="bthumb">
+					<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[3];?>" class="img-responsive"/></a>
+				</div>
+				<div class="ecom_txt">
+                	<h1><?php echo $title[3]; ?></h1>
+                	<p><?php echo $description[3]; ?></p>
+				</div>
+			<div class="clearfix"></div>
+		</div>
+	   </div>                       
+    </div>
+</div>  
+  
+    <div class="row">
+      <div class="col-md-6">
+			<div class="posts">
+				<div class="entry">
+					<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[4];?>" class="img-responsive"/></a>
+					</div>
+                    
+                    <div class="ecom_txt">
+                		<h1><?php echo $title[4]; ?></h1>
+						<p><?php echo $description[4]; ?></p>
+					</div>
+ 					
+				</div>
+                
+                <div class="entry">
+                	<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[6];?>" class="img-responsive"/></a>
+					</div>
+                    
+                     <div class="ecom_txt">
+                		<h1><?php echo $title[6]; ?></h1>
+                		<p><?php echo $description[6]; ?></p>
+					</div>
+                   
+				</div>
+			<div class="clearfix"></div>
+		</div>
+	</div> 
+                        
+	<div class="col-md-6">
+		<div class="posts">
+			<div class="entry">
+				<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[5];?>" class="img-responsive"/></a>
+				</div>
+					
+                <div class="ecom_txt">
+                	<h1><?php echo $title[5]; ?></h1>
+					<p><?php echo $description[5]; ?></p>
+                </div>
+			</div>
+                
+			<div class="entry">
+				<div class="bthumb">
+					<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[7];?>" class="img-responsive"/></a>
+				</div>
+				
+                <div class="ecom_txt">
+                	<h1><?php echo $title[7]; ?></h1>
+						<p><?php echo $description[7];?></p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>                                          
+    </div>
+  </div>
+</div>
+<!-- content blog ends -->

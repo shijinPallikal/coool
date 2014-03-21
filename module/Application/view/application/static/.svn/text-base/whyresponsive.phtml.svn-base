@@ -1,0 +1,468 @@
+
+   <script type="text/javascript" src="js/jquery-v1.7.1.js"></script>
+   <script type="text/javascript">
+$(function() {
+
+
+	$('#iphone').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'iphone');
+		$('#device-detail').attr('class', 'iphone-detail');
+	});
+
+	$('#iphone-l').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'iphone-l');
+		$('#device-detail').attr('class', 'iphone-l-detail');
+	});
+
+	$('#ipad').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'ipad');
+		$('#device-detail').attr('class', 'ipad-detail');
+	});
+
+	$('#ipad-l').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'ipad-l');
+		$('#device-detail').attr('class', 'ipad-l-detail');
+	});
+
+	$('#desktop').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'desktop');
+		$('#device-detail').attr('class', 'desktop-detail');
+	});
+
+	///get url from form field
+	function updateframe() {
+      var url = $("#getURL").val();
+      //alert(url);
+
+      /// check for http
+      if ($("#getURL").val().match(/^http/)) {
+            $('#displayframe').attr('src', url);
+        }
+        else {
+        	validURL = 'http://' + url;
+        	//alert(validURL);
+        	$('#displayframe').attr('src', validURL);
+        	return false;
+        }
+
+      }
+
+    /// form actions
+    $("#button").click(function() {
+		updateframe();
+  		RandomLink();
+	});
+
+	$('#getURL').keypress(function(e){
+      if(e.which == 13){
+       updateframe();
+       }
+      });
+
+    $(function() {
+    $('input[type=text]').focus(function() {
+      $(this).val('')
+      });
+
+ });
+
+
+    //// Check for url in url
+    var givenURL = (RegExp('url=' + '(.+?)(&|$)').exec(location.search)||[,null])[1];
+    if (givenURL == null){
+      ////set-up random url
+      base = "http://www.";
+			/*var urls = ["bbc.co.uk/bbcone","hicksdesign.co.uk","anderssonwise.com","forefathersgroup.com","jamus.co.uk","bostonglobe.com"];*/
+			var urls = ["cooolwebsite.com/coolwebsite_old/responsive-boot/index.html"];
+			var randomURL = urls[Math.floor(Math.random() * urls.length)];
+			var randomhttpURL = (base + randomURL);
+			$('#displayframe').attr('src', randomhttpURL);
+          	$('#getURL').attr('value', randomURL);
+			
+			updateframe();
+	  		RandomLink();
+    }else{
+      $('#getURL').attr('value',givenURL );
+      $('#displayframe').attr('src',givenURL);
+    }
+
+
+});
+</script>
+
+<!-- Seperator -->
+<script type="text/javascript">
+  function setColor(val)
+  	
+	{ 
+		 $(".active").css("background-color", val);
+		 $(".button a, button a:visited").css("background-color", val);
+		 $(".top").css("background-color", val);
+		 $("footer").css("background", val);
+		 $(".da-slide h2 span").css("background-color", val);
+		 $(".da-slide h2 span").css("background-color", val);
+	}
+	
+</script>
+
+<script type="text/javascript">
+  function setColor1(val)
+  	
+	{ 
+		
+		 $("body").css("background-color", val);
+	}
+	
+</script>
+
+<!-- Home Start -->
+ 		<span class="home"></span>
+        <div class="inner-page" style="background:#4baad3;">
+			<div class="container">
+				<h2 class="head"><span>Responsive</span> Web Design</h2>
+					<div class="pr-content">
+							<!-- Row Start-->
+							<div class="row">
+                            
+                            	<!-- column  Start-->
+                                <div class="col-md-5 col-sm-5">
+									<div class="pr-item">
+										 <div class="hero-head" style="margin-bottom:40px;">
+											
+												<p class="hero-p animated">Responsive website is a website that will respond and adapt to the user’s behavior and screen size by resizing and re-ordering the design, adapting images, typography, columns, etc., based on screen/browser size, resolution and orientation instead                                                    of providing each device a specific website.
+												</p>
+										 </div>
+										<a id="navbar-scroll" class="btn btn-info" title="Check out more freatures!" href="#.product">
+										<i class="icon-caret-down"></i> Read More
+</a>
+									</div>
+								</div>
+                                <!-- column  End-->
+                                
+								<!-- column  Start-->
+                                <div class="col-md-7 col-sm-7">
+									<!-- Carousel Start-->
+									<div id="carousel-example-generic" class="carousel slide">
+										
+                                        <!-- Wrapper for slides -->
+										<div class="carousel-inner">
+											<div class="item active">
+                                                                                            <img src="<?php echo $this->basePath().'/images/photos/img1.png';?>" class="img-responsive" alt=""  />
+											</div>
+											<div class="item">
+									                    <img src="<?php echo $this->basePath().'/images/photos/img2.png';?>" class="img-responsive" alt="" />
+											</div>
+                                            
+                                            <div class="item">
+										            <img src="<?php echo $this->basePath().'/images/photos/img3.png';?>" class="img-responsive" alt="" />
+											</div>
+										</div>
+
+										<!-- Controls -->
+										<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+											<span class="icon-prev"></span>
+										</a>
+										<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+											<span class="icon-next"></span>
+										</a>
+									</div>
+                                    <!-- Carousel End -->
+								</div>
+                                <!-- Column End-->
+							</div>
+                            <!-- Row End-->
+					</div>
+                    <!-- Prcontent End -->
+			</div>
+        </div>
+        
+        <div class="responselove hidden-xs">
+        	<div class="container">
+            	<div class="row">
+					<h2 class="pull-left">Why We <img src="<?php echo $this->basePath().'/images/photos/we-love-head_07_03.png';?>"> Responsive Website Design</h2>
+                    <a id="navbar-scroll" class="btn btn-primary pull-right" title="Check out more freatures!" href="#.product"><i class="icon-caret-down"></i> Scroll Down</a>
+                </div>
+            </div>
+        </div>
+        
+         <span id="product"></span>
+<!-- Home End-->
+
+<!-- product Start -->
+<div class="product" style="padding-bottom:25px; ">
+			<div class="container">
+				<h2 class="head">Responsive</h2>
+							<!-- Row Start-->
+							<div class="row">
+                            	<!-- column  Start-->
+                                <div class="col-md-8 col-sm-8">
+										 <div class="hero-head">
+                                            <div class="pr-para">
+                                            	<p>A Responsive website is a website which</p>
+                                            	<p> adapts itself to multiple devices.</p><br>
+                                                  </div>
+												<div class="row">
+                                                	<div class="col-md-6"><img src="<?php echo $this->basePath().'/images/photos/image1.jpg';?>" class="img-responsive" alt="" /></div>
+                                                    <div class="col-md-6">
+                                                    	<p class="pr-para1" style="font-size:30px;">A Responsive web design is:</p>
+                                                      
+                                                    		<ul class="big-list1">
+                                                        		<li><i class="icon-check"></i>Better for SEO</li>
+                                                        		<li><i class="icon-check"></i>Easier to update</li>
+                                                        		<li><i class="icon-check"></i>Easier to maintain</li>
+                                                        		<li><i class="icon-check"></i>Better reading experience</li>
+                                                    		</ul>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="pr-para2">
+                                                <p style="font-family:Arial, Helvetica, sans-serif; font-size:20px; letter-spacing:-2px;">
+                                                        <span id="g">G</span>
+                                                        <span id="o">o</span>
+                                                        <span id="o2">o</span>
+                                                        <span id="g">g</span>
+                                                        <span id="l">l</span>
+                                                        <span id="e">e</span>
+												<span style="letter-spacing:0;">&nbsp;says:</span>
+                                                </p><br>
+
+													<p>A single URL web address for the content helps Google’s algorithms assign the indexing properties for the content. For a mobile site, SEO and user experience are blood 									                                                     brothers.  If your site is unpleasant to use and the user can’t find what they’re looking for, they’ll make a quick exit. This causes your bounce rate to grow, which tells                                                      Google your site probably doesn’t have what that person was searching for. Congratulations, you’ve just been knocked down in the rankings for the term the user searched for. 																				                                                    </p><br>
+
+                                                     <p class="dummy"><strong>"In dummy words <span id="o">Responsive</span> is good" </strong></p><br>
+
+                                                    
+                                               </div>
+                                               
+                                             <div class="pr-para2">
+													<p>Everyone is talking about responsive design these days. It is bound to go mainstream in 2014. Every business from <strong>Harvard</strong> to <span class="aol">AOL</span> is embracing responsive design as the wave of                                                    the future, and more websites are popping up on every device with an internet connection with conforming layouts.</p> <br>
+
+                                                                                                  <p style="font-size:20px;  font-family: 'Open Sans Condensed',sans-serif;"><strong> So why not test responsive and see how it looks like on last                                                     page? </strong></p>
+											 </div>		
+										 </div>
+								</div>
+                                </div>
+                                
+                                
+                                
+                                
+                                
+                                <!-- column  End-->
+                                
+								<!-- column  Start-->
+                                 <div class="col-md-4 col-sm-4  hero-p animated hidden-xs">
+									<!-- Menu -->
+                                    <ul class="big-list" style="margin-top:100px;">
+										<a href="#.normal" id="navbar-scroll"><li><i class="icon-shield icon-flip-vertical"></i>Normal</li></a>
+                                        <a href="#.mobile" id="navbar-scroll"><li><i class="icon-tablet"></i>Mobile</li></a>
+                                        <a href="#.product" id="navbar-scroll"><li><i class="icon-puzzle-piece"></i>Responsive</li></a>
+                                        <a href="#.testing" id="navbar-scroll"><li><i class="icon-check"></i>Testing</li></a>
+                                      
+									</ul>
+                                    
+                                     <ul class="big-list1" style="margin-top:50px;">
+                                      <a id="navbar-scroll" class="btn btn-danger btn-lg pull-right" title="Check out more freatures!" href="#.normal"><i class="icon-caret-down"></i>Read More</a>
+                                     </ul>
+								</div>
+                                <!-- Column End-->
+							</div>
+                            <!-- Row End-->
+                            
+                            <!--<div class="row">
+                            	<div class="col-md-12">
+                                
+                                	 <div class="pr-para1">
+													<p>A single URL web address for the content helps Google’s algorithms assign the indexing properties for the content. For a mobile site, SEO and user experience are blood brothers.  If your site is unpleasant to use and the user can’t find what they’re looking for, they’ll make a quick exit. This causes your bounce rate to grow, which tells Google your site probably doesn’t have what that person was searching for. Congratulations, you’ve just been knocked down in the rankings for the term the user searched for. </p>
+													
+                                            </div>
+                                            
+                                             <div class="pr-para1">
+													<p>Everyone is talking about responsive design these days. It is bound to go mainstream in 2013. Every business from Harvard to AOL is embracing responsive design as the wave of the future, and more websites are popping up on every device with an internet connection with conforming layouts. So why not test responsive and see how it looks like on next page? </p>
+											</div>		
+                                
+                                </div>
+                            </div>-->
+                            
+			</div>
+        </div>
+        <span id="normal"></span>
+<!-- Product End -->
+
+<!-- normal Start -->
+<div class="normal product" style="background:#ecf9ff; padding-bottom:125px;">
+			<div class="container">
+				<h2 class="head">Normal</h2>
+							<!-- Row Start-->
+							<div class="row">
+                            	<!-- column  Start-->
+                                <div class="col-md-8 col-sm-8">
+										 <div class="hero-head">
+											<div class="item active">
+												<img src="<?php echo $this->basePath().'/images/photos/image21.jpg';?>" class="img-responsive" alt="" />
+											</div><br>
+<br>
+
+                                            	<div class="big-list2">
+                                                        		<li>Responsive help small businesses engage customers while they are on the move.</li>
+                                                        		<li>Responsive focuses on user’s environment and behavior automatically changing itself to fit multiple devices.</li>
+													
+                                            </div>
+										 </div>
+								</div>
+                                <!-- column  End-->
+                                
+								<!-- column  Start-->
+                                 <div class="col-md-4 col-sm-4 hero-p animated hidden-xs">
+									<!-- Menu -->
+                                     <ul class="big-list">
+										<a href="#.normal" id="navbar-scroll"><li><i class="icon-shield icon-flip-vertical"></i>Normal</li></a>                                        <a href="#.mobile" id="navbar-scroll"><li><i class="icon-tablet"></i>Mobile</li></a>
+                                        <a href="#.product" id="navbar-scroll"><li><i class="icon-puzzle-piece"></i>Responsive</li></a>
+                                        <a href="#.testing" id="navbar-scroll"><li><i class="icon-check"></i>Testing</li></a>
+									</ul>
+                                    
+                                  
+                                     
+                                     <div class="clearfix"></div>
+                                     
+                                     <div class="smartphone">
+                                     	<div class="big-list3 pull-left">84<span style="font-size:30px;">%</span></div>
+                                        <div class="smartright">Of smartphone owners<br><span style="color:#2d2d2d"><strong>are smart phone shoppers</strong></span></div>
+                                     </div>
+                                     
+                                        <ul class="big-list1" style="margin-top:50px;">
+                                      <a id="navbar-scroll" class="btn btn-danger btn-lg pull-right" title="Check out more freatures!" href="#.mobile"><i class="icon-caret-down"></i>Read More</a>
+                                     </ul>
+                                   
+                                       <div class="clearfix"></div>
+                                   <!--   <div class="smartphone">
+                                     	<div class="big-list3 pull-left">95<span style="font-size:30px;">%</span></div>
+                                        <div class="smartright">Of these shoppers use <br>their phone to shop while in a store</div>
+                                     </div>-->
+                                     
+                                     
+                                  <!--  <div>
+                                     	<li><span class="big-list3">84%</span> Of smartphone owners are smart phone shoppers</li>
+										<li><span class="big-list3">95%</span> Of these shoppers use their phone to shop while in a store</li>
+												
+											</div><br>
+<br>-->
+                                   
+								</div>
+                                <!-- Column End-->
+							</div>
+                            <!-- Row End-->
+			</div>
+        </div>
+        <span id="mobile"></span>
+<!-- normal End -->
+
+<!-- Mobile Start -->
+<div class="product mobile">
+			<div class="container">
+				<h2 class="head">Mobile</h2>
+							<!-- Row Start-->
+							<div class="row">
+                            	<!-- column  Start-->
+                                <div class="col-md-8 col-sm-8">
+										 <div class="hero-head">
+											<div class="item active">
+												<img src="<?php echo $this->basePath().'/images/photos/image5.png';?>" class="img-responsive pull-left" alt="" />
+                                                 <!--<img src="img/photos/mobile2.png" class="img-responsive hidden-xs" alt="" />-->
+											</div>
+                                    		<div class="clearfix"></div>
+                                            <div class="pr-para2">
+                                            <p>A mobile website is similar to a regular website but can only be accessed from mobiles </p>
+											</div><br>
+
+                                            <div class="pr-para3">
+                                            <p style="font-size:35px; line-height:40px; font-family: 'Open Sans Condensed',sans-serif; text-align:left;">If you need to constantly add and update it with new trends, then responsive is better. </p>
+</div>
+                                            <p>When it is about updating, mobile sites can be a pain as the site would need to be updated twice (desktop version and mobile version).</p><br><div class="pr-para2">
+<p> A mobile site requires low development cost compared to responsive design sites which need sophisticated coding and heavy technicalities.</p> 
+                                            
+                                            <p>But at the end because of extra work when updating it all ends up the same </p></div>
+                                            
+										 </div>
+								</div>
+                                <!-- column  End-->
+                                
+								<!-- column  Start-->
+                                 <div class="col-md-4 col-sm-4  hero-p animated hidden-xs"  style="margin-top:60px;">
+									<!-- Menu -->
+                                     <ul class="big-list">
+										<a href="#.normal" id="navbar-scroll"><li><i class="icon-shield icon-flip-vertical"></i>Normal</li></a>
+                                        <a href="#.mobile" id="navbar-scroll"><li><i class="icon-tablet"></i>Mobile</li></a>
+                                        <a href="#.product" id="navbar-scroll"><li><i class="icon-puzzle-piece"></i>Responsive</li></a>
+                                        <a href="#.testing" id="navbar-scroll"><li><i class="icon-check"></i>Testing</li></a>
+									</ul>
+                                    
+                                     <ul class="big-list1" style="margin-top:50px;">
+                                      <a id="navbar-scroll" class="btn btn-danger btn-lg pull-right" title="Check out more freatures!" href="#.testing"><i class="icon-caret-down"></i>Read More</a>
+                                     </ul>
+                                     
+                                 <!--  <ul class="big-list1" style="margin-top:150px;">
+                                   <img src="img/photos/image6.png" class="img-responsive" alt="" /> 
+                                  </ul>-->
+								</div>
+                                
+                                
+                                <!-- Column End-->
+							</div>
+                            <!-- Row End-->
+			</div>
+        </div>
+        <span id="testing"></span>
+<!-- Mobile End -->
+
+
+<!-- Testing Start -->
+<div class="product testing"  style="background:#ecf9ff; ">
+			<div class="container">
+				<h2 class="head">Check Your Responsive Design</h2>
+							<!-- Row Start-->
+							<div class="row">
+                            	<!-- column  Start-->
+                                <div class="col-md-12">
+                              
+                            <div class="visible-lg">
+                                <ul id="screen-options">	
+                                    <li id="iphone" class="active1">iPhone</li>
+                                    <li id="iphone-l">iPhone landscape</li>
+                                    <li id="ipad">iPad</li>
+                                    <li id="ipad-l">iPad landscape</li>
+                                    <li id="desktop">Desktop</span></li>
+                                </ul>
+                                
+                                 <ul class="big-list1" style="margin-top:50px;">
+                                     <a id="navbar-scroll" class="btn btn-danger btn-lg pull-right" title="Check out more freatures!" href="<?php echo $this->basePath().'/static/responsive';?>"><i class="icon-caret-down"></i>More Designs</a>
+                                     </ul>
+						 </div>
+                        <div class="clearfix"></div>
+                              <div class="clearfix"></div>
+                               <div id="viewport" class="iphone">
+                               	<iframe id="displayframe" name="displayframe" height="480" width="320" src="#"></iframe></div>
+                   				<div id="device-detail" class="iphone-detail">device detail</div>
+                           </div>
+                                <!-- column  End-->
+                                
+								<!-- column  Start-->
+                               
+                                
+                                
+                                <!-- Column End-->
+							</div>
+                            <!-- Row End-->
+			</div>
+        </div>
+<!-- Testing End -->
+
+

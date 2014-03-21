@@ -1,0 +1,367 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Cooolwebsite'))?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <?php 
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon/favicon.png'))
+                        //->prependStylesheet($this->basePath() . '/css/style.css')
+                        //->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        //->prependStylesheet($this->basePath() . '/css/user/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+                        ->prependStylesheet($this->basePath() . '/css/prettyPhoto.css')
+                        ->prependStylesheet($this->basePath() . '/css/flexslider.css')
+                        ->prependStylesheet($this->basePath() . '/css/font-awesome.css')
+                        ->prependStylesheet($this->basePath() . '/css/slider.css')
+                        ->prependStylesheet($this->basePath() . '/css/refineslide.css')
+                        ->prependStylesheet($this->basePath() . '/css/colorpicker.css')
+                        ->prependStylesheet($this->basePath() . '/css/red.css')
+                        ->prependStylesheet($this->basePath() . '/css/styleswitch.css')
+         
+        ?>
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            //->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/jquery.js')
+            ->prependFile($this->basePath() . '/js/bootstrap.js')
+            ->prependFile($this->basePath() . '/js/jquery.easing.1.3.js')
+            ->prependFile($this->basePath() . '/js/jquery.cookie.js')
+            ->prependFile($this->basePath() . '/js/colorpicker/colorpicker.js')
+            ->prependFile($this->basePath() . '/js/optionspanel.js')
+            ->prependFile($this->basePath() . '/js/filter.js')
+            ->prependFile($this->basePath() . '/js/jquery.isotope.js')
+            ->prependFile($this->basePath() . '/js/jquery.prettyPhoto.js')
+            ->prependFile($this->basePath() . '/js/jquery.flexslider-min.js')
+            ->prependFile($this->basePath() . '/js/jquery.refineslide.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.cslider.js')
+            ->prependFile($this->basePath() . '/js/modernizr.custom.28468.js')
+            ->prependFile($this->basePath() . '/js/custom.js')
+            ->prependFile($this->basePath() . '/js/jquery.form.js')
+            ->prependFile($this->basePath() . '/js/jquery-ui.js');
+
+        ?>
+    </head>
+    
+    
+    <script type="text/javascript">
+        $(function()
+        {
+            // this will get the full URL at the address bar
+            var url = window.location.href; 
+            // passes on every "a" tag 
+            $("#nav_main a").each(function()
+            {
+                // checks if its the same on the address bar
+                if(url == (this.href))
+                { 
+                    $(this).closest("li a").addClass("active");
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function setColor(val)
+        { 
+            var s= $('#nav_main a').hasClass('active')
+            //alert(s);
+            $(".active").css("background-color", val);
+            $(".button a, button a:visited").css("background-color", val);
+            $(".top").css("background-color", val);
+            $("#footer").css("background-color", val);
+            $("#footer").css("padding-top", "20px");
+            $("footer").css("background", val);
+            $(".da-slide h2 span").css("background-color", val);
+            $.ajax({
+                type:"POST",
+                url:"<?php echo $this->basePath().'color'?>",
+                cache:false,
+                data:{vals:val},
+                dataType:"html",
+                success:function(data)
+                {
+                },
+                error:function(){
+                    console.log("error");
+                }
+            });        
+        }
+    </script>
+    <script type="text/javascript">
+        function setColor1(val)
+        { 
+            $("body").css("background-color", val);
+        }
+    </script>
+    <?php
+    foreach ($color as $key => $value)
+    {
+        $picker[]= $value['color_picker'];
+        $colors[]= $value['color'];
+        $default[]= $value['color_field'];
+        $status[]= $value['color_status'];
+    }
+    //print_r($colors[0]);   
+    ?>
+    <div id="t_options"> 
+        <div class="options_inner">
+            <div class="options_toggle_holder">
+                <?php if($picker[0] == 1){ ?><p class="options_toggle"><span><i class="icon-cogs icon icon-2x"></i></span></p><?php } ?>
+            </div>    
+            <div class="options_box">       
+                <div class="options_heading">Template options</div>
+                    <h6>Wrapper layout</h6>
+                    <div class="full">
+                        <div class="halfcol">
+                            <div class="wideboxed">
+                                <a href="#" class="btn btn-info wrapboxed btn-block" onClick="javascript:setColor1('#000');">Boxed</a>
+                            </div>
+                        </div>
+                        <div class="halfcol">
+                            <div class="wideboxed">
+                                <a href="#" class="btn btn-primary wrapwide btn-block" onClick="javascript:setColor1('#fff');">Wide</a>
+                            </div>
+                        </div>              
+                    </div>
+                    <h6>Predefined colors</h6>
+                    <div id="stylechanger" class="full">
+                        <div class="fourcol color">
+                            <a href="" class="btn t_default btn-block" data-placement="bottom" title="black" onClick="javascript:setColor('#000');"></a>
+                        </div>
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_blue btn-block" data-placement="bottom" title="blue" onClick="javascript:setColor('#467da2');"></a>
+                        </div>
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_yellow btn-block" data-placement="bottom" title="yellow" onClick="javascript:setColor('#fcdd45');"></a>
+                        </div>
+                                
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_cocoa btn-block" data-placement="bottom" title="cocoa" onClick="javascript:setColor('#d6c05d');"></a>
+                        </div>
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_green btn-block" data-placement="bottom"title="green" onClick="javascript:setColor('#44a582');"></a>
+                        </div>
+                    </div><!-- end full -->
+                    
+                    <h6>Unlimited colors</h6>
+                    <div class="full">
+                        <input id="accent_color" type="text" value="e96b56" size="6" maxlength="6" style="background-color: rgb(255, 93, 94);">
+                    </div>
+                    <h6>Boxed bg color</h6> 
+                    <input type="text aligncenter" maxlength="6" size="6" id="bodybg_color" value="565656"/>
+                    <hr>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <body>
+        <div id="wrapper">
+            <div class="top"></div>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-3">
+                            <div class="logo">
+                            <?php
+                            foreach ($listLogos as $key => $value)
+                            {
+                                $s[]=$value['status'];
+                            ?>  
+                                <img src="/images/products/logo/<?php echo $value['image']?>" alt="" title="Coool website" class="img-responsive" border="0" />
+                                <?php
+                                if($s[0] == 1)
+                                {
+                                ?>
+                                    <p class="meta">product of<span class="color bold">codexmind</span></p>
+                                <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-9">
+                        <div class="navbar bs-docs-nav" role="banner">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                                    <ul id="nav_main" class="nav navbar-nav">
+                                        <?php
+                                        foreach ($listAllMenuDatas as $key => $value)
+                                        {
+                                            $url[]= $value['url'];
+                                            $menu[]= $value['menu_name'];
+                                        }
+                                        ?>
+                                        <li>
+                                            <a href="<?php if($url[0] != ''){ echo $url[0];} else {echo "#";}?>"><?php if($menu[0] != '') {echo ucfirst($menu[0]); } else{ echo "";}?></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php if($url[1] != ''){ echo $url[1];} else {echo "#";}?>"><?php if($menu[1] != '') {echo ucfirst($menu[1]); } else{ echo "";}?></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php if($url[2] != ''){ echo $url[2];} else {echo "#";}?>"><?php if($menu[2] != '') {echo ucfirst($menu[2]); } else{ echo "";}?></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php if($url[3] != ''){ echo $url[3];} else {echo "#";}?>"><?php if($menu[3] != '') {echo ucfirst($menu[3]); } else{ echo "";}?></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php if($url[4] != ''){ echo $url[4];} else {echo "#";}?>"><?php if($menu[4] != '') {echo ucfirst($menu[4]); } else{ echo "";}?></a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php if($url[5] != ''){ echo $url[5];} else {echo "#";}?>"><?php if($menu[5] != '') {echo ucfirst($menu[5]); } else{ echo "";}?></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="sep"></div>
+            <div class="container11">
+                <?php echo $this->content; ?>
+            </div> <!-- /container -->
+            <footer>
+                <div id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="widget">
+                                            <h5>Say Hello</h5>
+                                            <?php
+                                            $c= count($listContactusDatas);
+                                            foreach ($listContactusDatas as $key => $value)
+                                            {
+                                                $country[]= $value['country'];
+                                                $phone[]= $value['phone'];
+                                                $info[]= $value['info_email'];
+                                            }
+                                            ?>
+                                            <?php
+                                            //for($i= 0; $i<= $c-1; $i++)
+                                            //{
+                                            ?>
+                                                <span style='width:55px; float:left;'>
+                                                    <?php
+                                                    if($country[1] == "Sweden")
+                                                    {
+                                                        echo "Sverige";
+                                                    }
+                                                    else
+                                                    {
+                                                        echo ucfirst($country[1]);
+                                                    }
+                                                    ?>
+                                                </span>
+                                                <br>
+                                                
+                                                <span style='width:55px; float:left;'><?php echo $phone[1] ?>
+                                                </span>
+                                                <br>
+                                            <?php
+                                            //}
+                                            ?>
+                 
+                                            <a href="#" style="text-decoration:none;"><?php if($info[1] != ''){ ?><?php echo $info[1]; }?></a>
+                                            <div class="social">
+                                                <a href="http://www.facebook.com"><i class="icon-facebook facebook"></i></a>
+                                                <a href="http://www.twitter.com"><i class="icon-twitter twitter"></i></a>
+                                                <a href="https://in.linkedin.com"><i class="icon-linkedin linkedin"></i></a>
+                                                <a href="http://www.gmail.com"><i class="icon-google-plus google-plus"></i></a> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="widget">
+                                            <h5>Our Website Packages</h5>
+                                            <hr />
+                                            <div class="two-col">
+                                                <div class="col-left" style="width:40%;">
+                                                    <ul>
+                                                        <li><a href="<?php if($url[0] != ''){ echo $url[0];} else {echo "#";}?>"><?php if($menu[0] != '') {echo ucfirst($menu[0]); } else{ echo "Nomenu";}?></a></li>
+                                                        <li><a href="<?php if($url[1] != ''){ echo $url[1];} else {echo "#";}?>"><?php if($menu[1] != '') {echo ucfirst($menu[1]); } else{ echo "Nomenu";}?></a></li>
+                                                        <li><a href="<?php if($url[2] != ''){ echo $url[2];} else {echo "#";}?>"><?php if($menu[2] != '') {echo ucfirst($menu[2]); } else{ echo "Nomenu";}?></a></li>
+                                                       <li><a href="<?php if($url[3] != ''){ echo $url[3];} else {echo "#";}?>"><?php if($menu[3] != '') {echo ucfirst($menu[3]); } else{ echo "Nomenu";}?></a></li>
+                                                    </ul> 
+                                                </div>
+                                                <div class="col-right">
+                                                    <ul>
+                                                        <li><a href="<?php if($url[4] != ''){ echo $url[4];} else {echo "#";}?>"><?php if($menu[4] != '') {echo ucfirst($menu[4]); } else{ echo "Nomenu";}?></a></li>
+                                                        <li><a href="<?php if($url[5] != ''){ echo $url[5];} else {echo "#";}?>"><?php if($menu[5] != '') {echo ucfirst($menu[5]); } else{ echo "Nomenu";}?></a></li>
+                                                     
+                                                  </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="widget alignright hidden-xs">
+                                          <img src="images/photos/sati_img.png" class="img-responsive">
+                                        </div>
+                                        
+                                        <div class="widget alignleft visible-xs">
+                                          <img src="images/photos/sati_img.png" class="img-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                    
+                                <?php
+                                if($s[0] == 1)
+                                {
+                                ?>
+                                    <p class="copy">Product of Codex mind</p>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>  
+                </div>
+            </footer>
+            <?php echo $this->inlineScript() ?>
+        </div>
+        </body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function()
+            {
+                var s= $('#nav_main a').hasClass('active');
+                alert(s);
+                //alert("<?php echo $colors[0]; ?>");
+                $(".active").css("background-color", '<?php echo $colors[0]; ?>');
+                $(".button a, button a:visited").css("background-color", '<?php echo $colors[0]; ?>');
+                $(".top").css("background-color", '<?php echo $colors[0]; ?>');
+                $("#footer").css("background-color", '<?php echo $colors[0]; ?>');
+                $("#footer").css("padding-top", "20px");
+                $("footer").css("padding-top", "0");
+                $(".da-slide h2 span").css("background-color", '<?php echo $colors[0]; ?>');
+                $(".da-slide h2 span").css("background-color", '<?php echo $colors[0]; ?>');
+                $(".red").css("background-color", '<?php echo $colors[0]; ?>');
+            });
+</script>

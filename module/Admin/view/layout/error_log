@@ -1,0 +1,1 @@
+[17-Jan-2014 10:50:43 Europe/Moscow] PHP Fatal error:  Using $this when not in object context in /home/xblockbu/public_html/cooolwebsite.com/cooolzend/module/Admin/view/layout/layoutAdmin.phtml on line 1

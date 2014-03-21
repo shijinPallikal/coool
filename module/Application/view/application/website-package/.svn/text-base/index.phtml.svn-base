@@ -1,0 +1,297 @@
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <?php
+                foreach ($listMenuDatasImageWeb as $key => $value)
+                {
+                    if($value['image']!= '')
+                    {
+                    ?>
+                        <img src="<?php echo $this->basePath()?>images/products/menu/<?php echo $value['image'];?>" class="img-responsive" style="width:1024px; height:247px;" />
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <img src="<?php echo $this->basePath()?>/images/photos/paket_bnr.jpg" class="img-responsive">
+                    <?php
+                    }
+                }
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+
+<!-- sublink starts -->
+
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            		<div class="posts">
+                		<div class="tags">
+				            <a href="">Responsive Samples</a> <a href="">Other Services</a>  <a href="">Included Website Tools</a><!-- <a href="#">Why You Should go responsive</a>-->
+				</div>
+			</div>
+       	        </div>
+    	</div>
+	</div>
+<!-- sublink ends -->
+
+<!-- content area -->
+<?php foreach($webpackages as $webpackage)?>
+<div class="content blog">
+  <div class="container">
+    <div class="row">
+     
+     <!-- first column starts -->
+      <div class="col-md-8">
+		<div class="posts">
+			<div class="entry">
+				<h2><a href="#"><?php echo $webpackage['title'];?></a></h2>
+				<p><?php echo $webpackage['description'];?>
+				</p>
+			</div>
+			<hr />
+                  
+	<div class="comments well">
+            	
+             <table class="table table-bordered">
+                     	<tr style="background:#eee;">
+                          <td></td>
+                          
+                           <td>  <ul class="comment-list ">
+				<div class="comment pull-right">
+                                    <a class="" href="<?=$webpackage['package_one_link'];?>">
+				   <?php						
+					if($webpackage['package_one_image']=='') {
+				?>		
+                                        <img class="avatar" src="img/photos/home_pls.gif" alt="" />
+				<?php }
+					else {
+				?>
+                                        <img class="avatar" src="<?php echo $this->basePath().'/images/products/web_package/'.$webpackage['package_one_image'];?>" alt="" />
+					
+				<?php 
+				       }
+				?>
+				</a>
+                                </div>
+					<div class="comment-author"><a href="<?=$webpackage['package_one_link'];?>"><?=$webpackage['package_one_name'];?></a>
+                </div>
+			</ul></td>
+            
+              <td>  <ul class="comment-list">
+				<div class="comment pull-right">
+				 <a class="" href="<?=$webpackage['package_two_link'];?>">
+				   <?php						
+					if($webpackage['package_two_image']=='') {
+				?>		
+                                        <img class="avatar" src="img/photos/home_pls.gif" alt="" />
+				<?php }
+					else {
+				?>
+                                        <img class="avatar" src="<?php echo $this->basePath().'/images/products/web_package/'.$webpackage['package_two_image'];?>" alt="" />
+					
+				<?php 
+				       }
+				?>
+				</a>
+                                </div>
+					<div class="comment-author hidden-xs"><a href="<?=$webpackage['package_two_link'];?>"><?=$webpackage['package_two_name'];?></a></div>
+                    <div class="comment-author visible-xs"><a href="<?=$webpackage['package_two_link'];?>"><?=$webpackage['package_two_name'];?><br />
+ Mobile</a>
+                </div>
+			</ul></td>
+                          <td> <ul class="comment-list">
+				<div class="comment pull-right">
+				 <a class="" href="<?=$webpackage['package_three_link'];?>">
+				   <?php						
+					if($webpackage['package_three_image']=='') {
+				?>		
+                                        <img class="avatar" src="img/photos/home_pls.gif" alt="" />
+				<?php }
+					else {
+				?>
+                                        <img class="avatar" src="<?php echo $this->basePath().'/images/products/web_package/'.$webpackage['package_three_image'];?>" alt="" />
+					
+				<?php 
+				       }
+				?>
+				</a>
+                                </div>
+					<div class="comment-author hidden-xs"><a href="<?=$webpackage['package_three_link'];?>"><?=$webpackage['package_three_name'];?></a></div>
+                    <div class="comment-author visible-xs"><a href="<?=$webpackage['package_three_link'];?>"><?=$webpackage['package_three_name'];?></a></div>
+			</ul></td>
+                        
+                         
+                         
+                        </tr>
+                        
+                        <tr style="background:#eee;">
+                          <td><strong>Setup fee (one time fee)</strong></td>
+                          <td><?=$webpackage['package_one_setupfee_kr'];?> kr ( <?=$webpackage['package_one_setupfee_euro'];?> €)</td>
+                          <td><?=$webpackage['package_two_setupfee_kr'];?> kr (<?=$webpackage['package_two_setupfee_euro'];?> €)</td>
+                          <td><?=$webpackage['package_three_setupfee_kr'];?> kr (<?=$webpackage['package_three_setupfee_euro'];?> €)</td>
+                         
+                        </tr>
+                      
+                     
+                        <tr style="background:#eee;">
+                          <td><strong>Monthly cost</strong></td>
+                          <td><?=$webpackage['package_one_monthlycost_kr'];?> kr (<?=$webpackage['package_one_monthlycost_euro'];?> €)</td>
+                          <td><?=$webpackage['package_two_monthlycost_kr'];?> kr (<?=$webpackage['package_two_monthlycost_euro'];?> €)</td>
+                          <td><?=$webpackage['package_three_monthlycost_kr'];?> kr (<?=$webpackage['package_three_monthlycost_euro'];?> €)</td>
+                         
+                         
+                        </tr>
+                        <tr style="background:#eee;">
+                          <td width="31%"><strong>Market price </strong></td>
+                          <td width="25%"><?=$webpackage['package_one_marketplace_kr'];?> kr(<?=$webpackage['package_two_marketplace_euro'];?> €)</td>
+                          <td width="20%"><?=$webpackage['package_two_marketplace_kr']?> kr (<?=$webpackage['package_two_marketplace_euro'];?> €)</td>
+                          <td><?=$webpackage['package_three_marketplace_kr'];?> kr (<?=$webpackage['package_two_marketplace_euro'];?> €)</td>
+                        </tr>
+                     
+          
+                     
+                       <tr>
+                          <td width="31%" style="background:#ff5d5e; color:#FFF;"><strong>Specification</strong></td>
+                          <td width="25%"  style="background:#ff5d5e;  color:#FFF;"><strong><?=$webpackage['package_one_name'];?></strong></td>
+                          <td width="20%"  style="background:#ff5d5e;  color:#FFF;"><strong><?=$webpackage['package_two_name'];?></strong></td>
+                          <td  style="background:#ff5d5e;  color:#FFF;"><strong><?=$webpackage['package_three_name'];?></strong></td>
+                        </tr>
+                     <?php foreach($specifications as $specification){?>
+                        <tr>
+                          <td><?=$specification['pkg_specification'];?></td>
+                          <td><?=$specification['package_one'];?></td>
+                          <td><?=$specification['package_two'];?></td>
+                          <td><?=$specification['package_three'];?></td>
+                        </tr>
+                        
+                     <?php }?>
+                     
+              </table>
+        </div>
+        
+            
+       	       <div class="clearfix"></div>
+		</div>
+                 <?php foreach($otherServicesTitle as $serviceTitle)?>
+                         <h4 class="color"><?=$serviceTitle['service_title'];?></h4>
+        <div class="posts">
+			<div class="entry">
+<!--				<h2><a href="#">Buy a great looking website for your business</a></h2>
+-->				<p><?=$serviceTitle['service_description'];?>
+				</p>
+			</div>
+			<hr />
+
+            <div class="row">
+                <?php foreach($otherServices as $key =>$service ){?>
+            	<div class="col-md-4">
+            		<div class="feat-inner">
+             			<img src="<?php echo $this->basePath().'/images/products/other_service/'.$service['service_image'];?>" class="img-responsive">
+              				<a href="<?php echo $service['service_link'];?> "><h4 class="visible-lg visible-sm"><?php echo $service['service_title'];?> </h4></a>
+                            <a href="<?php echo $service['service_link'];?> "><h4 class="pull-left  visible-xs" style="margin-right:10px;"><?php echo $service['service_title'];?> </h4></a>
+             				<p><span class="visible-lg visible-sm"><?php echo $service['service_description'];?> </span>
+                            </p>
+              				<!-- Button -->
+                             <div class="button pull-right">
+                              <a href="#"><?php echo $service['service_price'];?>  Kr</a>
+                            </div>
+                            <div class="clearfix"></div>
+            		</div>
+          		</div> 
+                <?php }?>
+           </div>  
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	    
+	<!-- first column ends -->
+	<div class="col-md-4">
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<!-- Widget -->
+			<div class="widget">
+				<h4>Yes, please contact and tell Us more:</h4>
+				
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control mar_top" id="search" placeholder="Company Name...">
+                        <input type="text" class="form-control mar_top" id="search" placeholder="Contact Person...">
+                        <input type="text" class="form-control mar_top" id="search" placeholder="Phone Number...">
+                        <input type="text" class="form-control mar_top" id="search" placeholder="Email...">
+                    </div>
+                                   
+				
+                            
+				<h5>Iam Most Interested in</h5>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"> Homepage
+						</label>
+					</div>
+					
+                    <div class="checkbox">
+                        <label>
+                        	<input type="checkbox"> Homepage Mobile
+                        </label>
+		   </div>
+                   
+                    <div class="checkbox">
+                    	<label>
+                    		<input type="checkbox"> Homepage Responsive
+                    	</label>
+                    </div>
+                    
+                    <div class="checkbox">
+                    	<label>
+                    		<input type="checkbox"> E-Commerse
+                   		</label>
+                    </div>
+					
+                    <div class="selectbox">
+			<select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+		    </div>                                  
+
+		      <button type="submit" class="btn btn-danger mar_top">Send</button>
+	     </form>
+			</div>
+            
+			<div class="widget">
+                <h4>Contact Us</h4>
+                <p> Sverige: 08-55922987</p>
+                <p> Finland: 09-23169779</p>
+                <p> USA: 210-888-0498 </p>
+			</div> 
+
+			<div class="widget">
+				<h4>We will help you succeed on the Web</h4>
+                <p>We create a website for your needs at a good price.</p>
+                <p class="bold">Get a great looking website today!</p>
+			</div>
+                                              
+		</div>
+        <!-- Sidebar ends -->                                                
+	</div>
+    <!-- colmd4 ends -->
+    
+  </div>
+  <!-- row ends -->
+ </div>
+ <!-- container ends -->
+</div>
+<!-- content blog ends -->

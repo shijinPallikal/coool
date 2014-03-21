@@ -1,0 +1,373 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Cooolwebsite'))?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+        
+        <!-- Le styles -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon/favicon.ico'))
+                      //->prependStylesheet($this->basePath() . '/css/style.css')
+                      //->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/user/style.css')
+                      //->prependStylesheet($this->basePath() . '/css/user/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/user/bootstrap.css')
+                        ->prependStylesheet($this->basePath() . '/css/user/prettyPhoto.css')
+                        ->prependStylesheet($this->basePath() . '/css/user/flexslider.css')
+                        ->prependStylesheet($this->basePath() . '/css/font-awesome.css')
+                        ->prependStylesheet($this->basePath() . '/css/user/slider.css')
+                        ->prependStylesheet($this->basePath() . '/css/user/refineslide.css')
+                        ->prependStylesheet($this->basePath() . '/css/colorpicker/css/colorpicker.css')
+                        ->prependStylesheet($this->basePath() . '/css/red.css')
+                        ->prependStylesheet($this->basePath() . '/css/styleswitch.css')         
+        ?>
+
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/jquery.js')
+            ->prependFile($this->basePath() . '/js/bootstrap.js')
+            ->prependFile($this->basePath() . '/js/jquery.easing.1.3.js')
+            ->prependFile($this->basePath() . '/js/jquery.cookie.js')
+            ->prependFile($this->basePath() . '/js/colorpicker/colorpicker.js')
+            ->prependFile($this->basePath() . '/js/optionspanel.js')
+            ->prependFile($this->basePath() . '/js/filter.js')
+            ->prependFile($this->basePath() . '/js/jquery.isotope.js')
+            ->prependFile($this->basePath() . '/js/jquery.prettyPhoto.js')
+            ->prependFile($this->basePath() . '/js/jquery.flexslider-min.js')
+            ->prependFile($this->basePath() . '/js/jquery.refineslide.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.cslider.js')
+            ->prependFile($this->basePath() . '/js/modernizr.custom.28468.js')
+            ->prependFile($this->basePath() . '/js/custom.js')
+            ->prependFile($this->basePath() . '/js/jquery-ui.js');
+        
+    ?>
+        <!-- Scripts -->
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>-->
+    
+            <script type="text/javascript">
+                var conHeight3 = $(".imgs").height();
+                var imgHeight3 = $(".imgs img").height();
+                var gap3 = (imgHeight3 - conHeight3)/2;
+                $(".imgs img").css("margin-top",-gap3);
+            </script>
+<!--            <style type="text/css">
+
+                .imgs
+                {
+                    width:262px; min-height:35px; display:block; position:relative;overflow:hidden;
+                }
+                .imgs img
+                {
+                    position:absolute; top:0; left:0; width:100%;
+                }
+            </style>-->
+
+
+
+            
+        <script type="text/javascript">
+        $(function(){
+    
+            // this will get the full URL at the address bar
+            var url = window.location.href; 
+            // passes on every "a" tag 
+            $("#nav_main a").each(function() {
+                // checks if its the same on the address bar
+                if(url == (this.href)) { 
+                    $(this).closest("li a").addClass("active");
+                }
+            });
+        });
+        </script>
+        <!-- Seperator -->
+        <script type="text/javascript">
+        function setColor(val){ 
+            $(".active").css("background-color", val);
+            $("button a:visited").css("background-color", val);
+            $(".top").css("background-color", val);
+            $("footer").css("background-color", val);
+        }
+        </script>
+        <div id="t_options"> 
+            <div class="options_inner">
+                <div class="options_toggle_holder">
+                    <p class="options_toggle"><span><i class="icon-cogs icon icon-2x"></i></span></p>
+                </div>      
+                <div class="options_box">       
+                    <div class="options_heading">Template options</div>
+                    <h6>Wrapper layout</h6>
+                    <div class="full">
+                        <div class="halfcol">
+                            <div class="wideboxed">
+                                <a href="#" class="btn btn-info wrapboxed btn-block" onClick="javascript:setColor1('#000');">Boxed</a>
+                            </div>
+                        </div>
+                        <div class="halfcol">
+                            <div class="wideboxed">
+                                <a href="#" class="btn btn-primary wrapwide btn-block" onClick="javascript:setColor1('#fff');">Wide</a>
+                            </div>
+                        </div>              
+                    </div>
+         
+                    <h6>Predefined colors</h6>
+                    <div id="stylechanger" class="full">
+                        <div class="fourcol color">
+                            <a href="" class="btn t_default btn-block" data-placement="bottom" title="black" onClick="javascript:setColor('#000');"></a>
+                        </div>
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_blue btn-block" data-placement="bottom" title="blue" onClick="javascript:setColor('#467da2');"></a>
+                        </div>
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_yellow btn-block" data-placement="bottom" title="yellow" onClick="javascript:setColor('#fcdd45');"></a>
+                        </div>
+                        
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_cocoa btn-block" data-placement="bottom" title="cocoa" onClick="javascript:setColor('#d6c05d');"></a>
+                        </div>
+                        
+                        <div class="fourcol color">
+                            <a href="#" class="btn t_green btn-block" data-placement="bottom" title="green" onClick="javascript:setColor('#44a582');"></a>
+                        </div>
+                    </div><!-- end full -->
+            
+                    <h6>Unlimited colors</h6>
+                    <div class="full">
+        
+                        <input id="accent_color" type="text" value="e96b56" size="6" maxlength="6" style="background-color: rgb(255, 93, 94);"></div>
+                    <h6>Boxed bg color</h6>
+                    <input type="text aligncenter" maxlength="6" size="6" id="bodybg_color" value="565656"/>
+                    <hr>
+                </div>  
+            </div>
+        </div>
+    </head>
+    <body>
+        
+        <!-- Header starts -->
+        <div id="wrapper">
+            <div class="top"></div>
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-3">
+                            <!-- Logo. Use class "color" to add color to the text. -->
+                            <div class="logo" style="height: 88px; width: 370px;">
+                            
+                                <?php foreach ($listLogos as $key => $value)
+                                {
+                                    list($width,$height) = getimagesize("public/images/products/logo/".$value['image']);
+                                    //echo $width; echo $height; 
+                                    $s[]=$value['status'];
+                                    if($width <= 262 && $height <= 35)
+                                    {
+                                        
+                                ?>  
+
+                                        <img src="/images/products/logo/<?php echo $value['image']?>" alt="" title="Coool website" class="" />
+                                    <?php
+                                    }
+                                    else
+                                    {
+                                        //echo "hai123";
+                                    ?>
+                                        <div class="imgs">
+                                            <img src="/images/products/logo/<?php echo $value['image']?>" alt="" title="Coool website" class="" height="" />
+                                        </div>
+                                    <?php
+                                    }
+                                    if($s[0] == 1)
+                                    {
+                                    ?>
+                                        <p class="meta">product of<span class="color bold">codexmind</span></p>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 col-sm-9">
+                            <div class="navbar bs-docs-nav" role="banner">
+                                <div class="container">
+                                    <div class="navbar-header">
+                                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                                        <ul id="nav_main" class="nav navbar-nav">
+                                        <?php
+                                        foreach ($listAllMenuDatas as $key => $value)
+                                        {
+                                        ?>
+                                            <li><a href="<?php if($value['url'] != ''){echo $value['url']; } else{ echo "#";}?>"><?php echo ucfirst($value['menu_name']);?></a>
+                                            </li>
+                                        <?php         
+                                        } 
+                                        ?>
+                                            
+                                            
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <!-- Header ends -->
+                <!-- Seperator -->
+                <div class="sep"></div>
+                <!-- Seperator -->
+                
+
+
+                <!--<div class="container">-->
+                <?php echo $this->content; ?>
+            
+
+                <!-- </div>--> <!-- /container -->
+                <footer>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="widget">
+                                            <h5>Say Hello</h5>
+                                            <?php
+                                               $c= count($listContactusDatas);
+                                                foreach ($listContactusDatas as $key => $value)
+                                                {
+                                                  $country[]= $value['country'];
+                                                  $phone[]= $value['phone'];
+                                                  $info[]= $value['info_email'];
+                                                 
+                                                }
+                                               
+                                                ?>
+                  
+                                                <?php
+                                                for($i= 0; $i<= $c-1; $i++)
+                                                {
+                                                ?>
+                                                        <span style='width:55px; float:left;'>
+                                                        <?php
+                                                            if($country[$i] == "Sweden")
+                                                            {
+                                                              echo "Sverige";
+                                                            }
+                                                            else
+                                                            {
+                                                              echo ucfirst($country[$i]);
+                                                            }
+                                                        ?>
+                                                        </span>
+                                                        <span style='font-size:12px;float:left; width:10px;'>:</span>
+                                                        <span style='width:55px; float:left;'><?php echo $phone[$i] ?></span><br>
+                                                    <?php
+                                                    }
+                                                    ?>
+                 
+                                                <a href="#" style="text-decoration:none;"><?php if($info[1] != ''){ ?><span style='width:55px; float:left;'>E-mail</span><span style='font-size:12px;float:left; width:10px;'>:</span>&nbsp;<?php echo $info[1]; }?></a>
+                                                <div class="social">
+                                                    <a href="http://www.facebook.com"><i class="icon-facebook facebook"></i></a>
+                                                    <a href="http://www.twitter.com"><i class="icon-twitter twitter"></i></a>
+                                                    <a href="https://in.linkedin.com"><i class="icon-linkedin linkedin"></i></a>
+                                                    <a href="http://www.gmail.com"><i class="icon-google-plus google-plus"></i></a> 
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="widget">
+                                            <h5>Our Website Packages</h5>
+                                            <hr />
+                                            <div class="two-col">
+                                                <div class="col-left" style="width:40%;">
+                                                  <ul>
+                                                    <li><a href="#">Home</a></li>
+                                                    <li><a href="#">Webpage Packages</a></li>
+                                                    <li><a href="#">Ecommerce</a></li>
+                                                    <li><a href="#">Our Products</a></li>
+                                                  </ul> 
+                                                </div>
+                                                <div class="col-right">
+                                                  <ul>
+                                                    <li><a href="#">Responsive Samples</a></li>
+                                                    <li><a href="#">Why you Should Go Responsive</a></li>
+                                                     <li><a href="#">Servives</a></li>
+                                                    <li><a href="#">Contact Us</a></li>
+                                                  </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+              <div class="col-md-4">
+                <div class="widget alignright hidden-xs">
+                  <img src="images/photos/sati_img.png" class="img-responsive">
+                </div>
+                
+                 <div class="widget alignleft visible-xs">
+                  <img src="images/photos/sati_img.png" class="img-responsive">
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!-- Copyright info -->
+           
+                <?php
+                if($s[0] == 1)
+                {
+                ?>
+                    <p class="copy">Product of Codex mind</p>
+                <?php
+                }
+            
+            ?>
+      </div>
+    </div>
+  <div class="clearfix"></div>
+  </div>
+  <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span> 
+
+     
+            </footer>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
+<script type="text/javascript">
+  function setColor(val){ 
+     $(".active").css("background-color", val);
+     $(".button a, button a:visited").css("background-color", val);
+     $(".top").css("background-color", val);
+     $("footer").css("background", val);
+     $(".da-slide h2 span").css("background-color", val);
+     $(".da-slide h2 span").css("background-color", val);
+        
+    }
+</script>
+
+<script type="text/javascript">
+  function setColor1(val)
+    
+    { 
+        
+         $("body").css("background-color", val);
+    }
+    
+</script>
+
+
+    

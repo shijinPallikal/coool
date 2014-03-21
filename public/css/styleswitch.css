@@ -1,0 +1,91 @@
+#styleswitch {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #CCCCCC;
+    height: 188px;
+    left: -200px;
+    padding: 0 5px 5px;
+    position: fixed;
+    top: 200px;
+    width: 200px;
+    z-index: 9999;
+}
+#styleswitch h3 {
+    background: none repeat scroll 0 0 #8DC153;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin: -2px 0 5px -10px;
+    padding: 5px 10px 5px 20px;
+    width: 250px;
+}
+#styleswitch h3 i {
+    margin: 0 5px;
+}
+#styleswitch a {
+    display: inline-block;
+    height: 22px;
+    margin: 6px;
+    text-indent: -9999px;
+    width: 22px;
+}
+#styleswitch a#color1 {
+    background: none repeat scroll 0 0 #F25C27;
+}
+#styleswitch a#color2 {
+    background: none repeat scroll 0 0 #8FB442;
+}
+#styleswitch a#color3 {
+    background: none repeat scroll 0 0 #6E7A87;
+}
+#styleswitch a#color4 {
+    background: none repeat scroll 0 0 #0787C4;
+}
+#styleswitch a#color5 {
+    background: none repeat scroll 0 0 #30A6B1;
+}
+#styleswitch a#color6 {
+    background: none repeat scroll 0 0 #A75E99;
+}
+#styleswitch a#color7 {
+    background: none repeat scroll 0 0 #8D671C;
+}
+#styleswitch a#color8 {
+    background: none repeat scroll 0 0 #DC2C6E;
+}
+#styleswitch a#color9 {
+    background: none repeat scroll 0 0 #03956D;
+}
+#styleswitch a#color10 {
+    background: none repeat scroll 0 0 #705950;
+}
+#styleswitch a#color11 {
+    background: none repeat scroll 0 0 #119717;
+}
+#styleswitch a#color12 {
+    background: none repeat scroll 0 0 #F54F4D;
+}
+#styleswitch a#color13 {
+    background: none repeat scroll 0 0 #5489DE;
+}
+#styleswitch a#color14 {
+    background: none repeat scroll 0 0 #FF9900;
+}
+#styleswitch a#color15 {
+    background: none repeat scroll 0 0 #EA6164;
+}
+#styleswitch a#color16 {
+    background: none repeat scroll 0 0 #5F7225;
+}
+#styleswitch a#color17 {
+    background: none repeat scroll 0 0 #28825D;
+}
+#styleswitch a#color18 {
+    background: none repeat scroll 0 0 #10A592;
+}
+#styleswitch a#color19 {
+    background: none repeat scroll 0 0 #029440;
+}
+#styleswitch a#color20 {
+    background: none repeat scroll 0 0 #776B26;
+}

@@ -1,0 +1,142 @@
+<style type="text/css">
+#commentForm { width: 500px; }
+#commentForm label { width: 250px; }
+#commentForm label.error, #commentForm input.submit { margin-left: 253px; }
+#signupForm { width: 670px; }
+#signupForm label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+#newsletter_topics label.error {
+	display: none;
+	margin-left: 103px;
+}
+</style>
+
+<div class="span9" id="content">
+    <div class="row-fluid">
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="breadcrumb">
+                    <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
+                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
+                    <li>
+                        <a href="">Dashboard</a> <span class="divider">/</span>	
+                    </li>
+                    <li>
+                        <a href="">Home</a> <span class="divider">/</span>	
+                    </li>
+                    <li class="active"><a href="" >Add Menu</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <a class="btn btn-primary " href="/admin/menu">List Menu</a>
+    </div>
+
+
+    <div class="row-fluid">
+        <div class="span12">
+
+            <!-- block - -->
+
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">Menu Form</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form class="form-horizontal" id="addslider" method="post" enctype="multipart/form-data">
+                        <?php 
+                        foreach($editMenuData as $key => $value)
+                        {
+                        ?>
+                            <fieldset>
+                                <legend>Form Components</legend>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">Language</label>
+                                    <div class="controls">
+                                        <select name="lan" id="lan">
+                                            <option>Select Please..</option>
+                                            <?php
+                                            if(count($listLanguages) != '')
+                                            {
+                                                foreach ($listLanguages as $key => $value1)
+                                                {
+                                                ?>
+                                                <option value="<?php echo $value1['id']; ?>" <?php if($value['language_id']== $value1['id']) echo "selected";?>><?php echo $value1['languages']; ?></option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">Menu Name </label>
+                                    <div class="controls">
+                                        <input type="text" name="menu_title" id="image_title" class="span6" id="typeahead" value="<?php echo $value['menu_name']?>" >
+                                   
+                                        
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">Menu Page Image </label>
+                                    <div class="controls">
+                                    <img src="/images/products/menu/<?php echo $value['image']?>" width="50" height="50"><br />
+                                        <input type="file" name="menu_page_image" id="menu_page_image">
+                                        <br>
+                                        <span style="font-size:12px; color:red;">Please upload 1000 W X 207 H</span>
+                                        
+
+                                    </div>
+                                </div>
+                               <!-- <div class="control-group">
+                                    <label class="control-label" for="typeahead">Menu Url </label>
+                                    <div class="controls">
+                                        <input type="text" name="menu_url" id="menu_url" class="span6" id="typeahead" value="<?php echo $value['url']?>" >
+                                        
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">Controller Name </label>
+                                    <div class="controls">
+                                        <input type="text" name="controller" id="controller" class="span6" value="<?php //echo $value['controller']?>" >
+                                        
+
+                                    </div>
+                                </div>-->
+
+
+                                <div class="form-actions">
+                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                                    <button type="reset" class="btn" id="cancel">Cancel</button>
+                                </div>
+                            </fieldset>
+                        <?php
+                        }
+                        ?>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+<script type="text/javascript">
+    $("#cancel").click(function()
+    {
+        window.location.href= "<?php echo $this->basePath()?>/admin/menu";
+    });
+
+</script>

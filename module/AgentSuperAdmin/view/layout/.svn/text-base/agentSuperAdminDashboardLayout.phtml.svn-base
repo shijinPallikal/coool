@@ -1,0 +1,175 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Cooolwebsite') ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/imgages/favicon/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/admin/style/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/assets/jquery-ui.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/vendors/easypiechart/jquery.easy-pie-chart.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/assets/styles.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/css/prettify.css')
+                      
+        ?>
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-ui.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery.ui.core.js')
+            ->prependFile($this->basePath() . '/js/admin/vendors/ckeditor/ckeditor.js')
+            ->prependFile($this->basePath() . '/js/admin/vendors/ckeditor/adapters/jquery.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery.ui.datepicker.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-ui.multidatespicker.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery.validate.js')
+            ->prependFile($this->basePath() . '/js/admin/vendors/easypiechart/jquery.easy-pie-chart.js')
+            ->prependFile($this->basePath() . '/js/admin/assets/scripts.js')
+            ->prependFile($this->basePath() . '/js/admin/js/prettify.js')
+            ->prependFile($this->basePath() . '/js/admin/js/lang-css.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-1.7.2.js')
+
+        ; ?>
+        
+        <style>
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+    background: #743620 none; /* a color that fits the widget theme */
+    color: white; /* a color that is readeable with the color above */
+}
+</style>
+         
+<script>
+  $(function() {
+    //  alert('c');
+      $('#setofferid').val('0');
+      
+      
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      dateFormat: 'yy-mm-dd',
+      showOn: "button",
+      buttonImage: "images/calendar.gif",
+      buttonImageOnly: true,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    
+    
+    
+    
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      dateFormat: 'yy-mm-dd',
+      showOn: "button",
+      buttonImage: "images/calendar.gif",
+      buttonImageOnly: true,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  
+ 
+  </script>
+  
+ 
+  
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Agentsuperadmin Panel</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i><?php echo $_SESSION['username'];?><i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="/agentSuperAdmin/superAdminLogout">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">Dashboard</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Home <b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    
+                                    <li>
+                                        <a href="/agentSuperAdmin/smallPackage">Default Small Package</a>
+                                    </li>
+                                    <li>
+                                        <a href="/agentSuperAdmin/bigPackage">Default Big Package</a>
+                                    </li>
+                                    
+                                                                                  
+                                </ul>
+                            </li>
+
+
+                              
+                               
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    
+                                    <li>
+                                         <a href="/agentSuperAdmin/commonSettings">Common Settings</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                   
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                
+        <?php /*<div class="container">*/?>
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Codexmind Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        <?php /*</divasd<!-- /container -->*/?>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

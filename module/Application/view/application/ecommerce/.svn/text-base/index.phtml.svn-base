@@ -1,0 +1,191 @@
+<!-- banner starts -->
+<script type="text/javascript">
+    var conHeight4 = $(".img2").height();
+    var imgHeight4 = $(".img2 img").height();
+    var gap4 = (imgHeight4 - conHeight4)/2;
+    $(".img2 img").css("margin-top",-gap4);
+</script>
+<style type="text/css">
+	.img2
+    {
+        width:1024px; height:247px; display:block; position:relative;overflow:hidden;
+    }
+    .img2 img
+    {
+        position:absolute; top:0; left:0; width:100%;
+    }
+</style>
+<div class="ecompage-head">
+	<div class="container">
+    	<div class="row">
+      		<div class="col-md-12">
+      			<?php
+      			foreach ($listMenuDatasImage as $key => $value)
+      			{
+      				if($value['image']!= '')
+      				{
+      				?>
+      					<div class="img2"> 
+      						<img src="images/products/menu/<?php echo $value['image'];?>" />
+      					</div>
+	      			<?php
+	      			}
+	      			else
+	      			{
+	      			?>
+       					<img src="images/photos/ecome-2.jpg" class="img-responsive"/>
+       				<?php
+       				}
+       			}
+       			?>
+      		</div>
+    	</div>
+  	</div>
+</div>
+
+<!-- banner starts -->
+
+<!-- sublink starts -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        	<div class="posts">
+                <div class="tags">
+					<a href="responsive.html">Responsive Samples</a> <a href="otherservices.html">Other Services</a>  <a href="website_tools.html">Included Website Tools</a><!-- <a href="#">Why You Should go responsive</a>-->
+				</div>
+			</div>
+       	</div>
+    </div>
+</div>
+<!-- sublink ends -->
+
+<!-- content area -->
+
+<div class="content blog">
+	<div class="container">
+    	<div class="row">
+    	<?php
+    	//$image= array();
+    	foreach ($listEcommerceDatas as $key => $value)
+    	{
+
+	  		$image[] = $value["image"];
+	  		$title[] = $value['title'];
+	  		$description[] = $value['description'];
+  		}
+    	?>
+      		<div class="col-md-6">
+				<div class="posts">
+					<div class="entry">
+						<div class="bthumb">
+							<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[0];?>" class="img-responsive"/></a>
+						</div>
+					<div class="ecom_txt">
+                		<h1><?php echo $title[0]; ?></h1>
+						<p><?php echo $description[0]; ?></p>
+					</div>
+				</div>
+                
+                <div class="entry">
+                	<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[2];?>" class="img-responsive"/></a>
+					</div>
+                   
+                   <div class="ecom_txt">
+                		<h1><?php echo $title[2]; ?></h1>
+						<p><?php echo $description[2]; ?></p>
+					</div>
+				</div>
+			<div class="clearfix"></div>
+		</div>
+	</div> 
+                        
+	<div class="col-md-6">
+		<div class="posts ">
+			<div class="entry">
+				<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[1];?>" class="img-responsive"/></a>
+				</div>
+					
+                 <div class="ecom_txt">
+                		<h1><?php echo $title[1]; ?></h1>
+						<p><?php echo $description[1]; ?></p>
+					</div>
+               
+			</div>
+                
+			<div class="entry">
+				<div class="bthumb">
+					<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[3];?>" class="img-responsive"/></a>
+				</div>
+				<div class="ecom_txt">
+                	<h1><?php echo $title[3]; ?></h1>
+                	<p><?php echo $description[3]; ?></p>
+				</div>
+			<div class="clearfix"></div>
+		</div>
+	   </div>                       
+    </div>
+</div>  
+  
+    <div class="row">
+      <div class="col-md-6">
+			<div class="posts">
+				<div class="entry">
+					<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[4];?>" class="img-responsive"/></a>
+					</div>
+                    
+                    <div class="ecom_txt">
+                		<h1><?php echo $title[4]; ?></h1>
+						<p><?php echo $description[4]; ?></p>
+					</div>
+ 					
+				</div>
+                
+                <div class="entry">
+                	<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[6];?>" class="img-responsive"/></a>
+					</div>
+                    
+                     <div class="ecom_txt">
+                		<h1><?php echo $title[6]; ?></h1>
+                		<p><?php echo $description[6]; ?></p>
+					</div>
+                   
+				</div>
+			<div class="clearfix"></div>
+		</div>
+	</div> 
+                        
+	<div class="col-md-6">
+		<div class="posts">
+			<div class="entry">
+				<div class="bthumb">
+						<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[5];?>" class="img-responsive"/></a>
+				</div>
+					
+                <div class="ecom_txt">
+                	<h1><?php echo $title[5]; ?></h1>
+					<p><?php echo $description[5]; ?></p>
+                </div>
+			</div>
+                
+			<div class="entry">
+				<div class="bthumb">
+					<a href="#"><img src="/images/products/ecommerce_package/<?php echo $image[7];?>" class="img-responsive"/></a>
+				</div>
+				
+                <div class="ecom_txt">
+                	<h1><?php echo $title[7]; ?></h1>
+						<p><?php echo $description[7];?></p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>                                          
+    </div>
+  </div>
+</div>
+<!-- content blog ends -->

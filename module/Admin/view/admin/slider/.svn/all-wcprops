@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/coolwebsite/!svn/ver/68/module/Admin/view/admin/slider
+END
+delete.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/slider/delete.phtml
+END
+status.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/slider/status.phtml
+END
+edit.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/slider/edit.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/slider/index.phtml
+END
+add.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/coolwebsite/!svn/ver/68/module/Admin/view/admin/slider/add.phtml
+END
+ajax-list.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/slider/ajax-list.phtml
+END

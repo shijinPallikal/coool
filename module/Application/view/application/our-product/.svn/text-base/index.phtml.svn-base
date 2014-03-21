@@ -1,0 +1,81 @@
+<script type="text/javascript" src="http://testkernew.co.in/js/webservice/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://testkernew.co.in/js/webservice/3xcoder_cool.js"></script>
+<script type="text/javascript" src="http://testkernew.co.in/js/webservice/jquery.loadmask.min.js"></script>
+
+<link href="http://testkernew.co.in/css/webservice/style_cool.css" rel="stylesheet" type="text/css"></link>
+<link href="http://testkernew.co.in/css/webservice/jquery.loadmask.css" rel="stylesheet" type="text/css"></link>
+<link href="http://testkernew.co.in/css/webservice/tree.css" rel="stylesheet" type="text/css"></link>
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+      <?php
+                foreach ($listMenuDatasImage as $key => $value)
+                {
+                    if($value['image']!= '')
+                    {
+                    ?>
+                        <img src="images/products/menu/<?php echo $value['image'];?>" class="img-responsive" style="width:1024px; height:247px;" />
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <img src="/images/photos/suprt_bnr.jpg" class="img-responsive">
+                    <?php
+                    }
+                }
+        ?>
+        
+      
+      
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+
+<!-- content area -->
+
+<div class="content blog">
+  <div class="container_product">
+    <div class="row">
+      <div class="col-md-12" style="">  
+               <div id="xcontainer" style="min-height:200px;"></div>
+      </div>
+    </div>
+  <!-- row ends -->
+ </div>
+ <!-- container ends -->
+</div>
+<!-- content blog ends -->
+
+<script type="text/javascript">
+     $(document).ready(function() {  
+      var orderStatus = getURLParameter('order');      
+      $('#xcontainer').loadPackages({
+          config:{
+              height    : 'auto',
+              width     : 50,
+              bgColor   : '#005dff',
+              source    : 'xcontainer'              
+          },          
+          app: {
+              rootURL: 'http://testkernew.co.in',
+              agentURL: 'http://www.cooolwebsite.com/3xcoderapi.html?order=1',
+              userCode:'dhye59e2ga',
+              page:1,
+              projectPackageCategoryId: '0' ,
+              language:'en',
+              orderStatus:orderStatus
+          },
+          complete  : function(ret) {  
+               //console.log(ret);
+          }
+       });            
+   });
+</script>

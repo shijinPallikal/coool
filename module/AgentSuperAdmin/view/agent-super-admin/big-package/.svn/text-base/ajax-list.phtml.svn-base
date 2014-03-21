@@ -1,0 +1,72 @@
+<div class="block-content collapse in">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                
+                <th>Big Image</th>
+                <th>Small Image</th>
+                <th style="text-align:center;">Status</th>
+                <!--<th style="text-align:center;">featured</th>
+                <th style="text-align:center;">Home featured</th>-->
+                <th style="text-align:center;" colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if(count($listAllSuperAdminBigPackage) != '')
+            { 
+                foreach ($listAllSuperAdminBigPackage as $key => $value)
+                {
+                    //echo $c= count($value['featured_product']);
+                ?>
+                    <tr>
+                        <td><?php echo $value['id'];?></td>
+                        <td>
+                            <?php echo $value['product_title'];?>&nbsp;
+                            <?php if($value['default'] == 1){?>(Default One)<?php }?></td>
+                        
+                        <td>
+                            <img src="/images/products/agent_super_admin/big_package/<?php echo $value['image1'];?>" width="60" height="50" border="0">              
+                        </td>
+                        <td>
+                            <img src="/images/products/agent_super_admin/big_package/<?php echo $value['image2'];?>" width="60" height="50" border="0"> 
+                        </td>
+                        <td style="text-align:center;">
+                            <?php 
+                            if($value['status'] == 1)
+                            {
+                            ?>
+                                <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                            <?php
+                            }
+                            else 
+                            {
+                            ?>
+                                <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                            <?php
+                            }
+                            ?>
+                        </td>
+
+                        <td>
+                            <a href="/admin/bigPackage/edit/<?php echo $value['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                        </td>
+                        <td>
+                            <img src="/images/delete.gif" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del">
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
+            else
+            {
+            ?>
+                <tr><td colspan="5"> Oops No Packages added Yet.....</td></tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,141 @@
+<div class="block-content collapse in">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <!--<th>Big Image</th>-->
+                <th>Image</th>
+            
+                <th style="text-align:center;">Status</th>
+                <!--<th style="text-align:center;">featured</th>
+                <th style="text-align:center;">Home featured</th>-->
+                <th style="text-align:center;" colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr><td colspan="9" style="background-color:yellow;"><h4>Agent Super Admin</h4></td></tr>
+            <?php
+            if(count($listAllSuperAdminPackage) != '')
+            { 
+                ?>
+                <tr>
+                    <td colspan="10"><h6></h6></td>
+                </tr>
+                <tr>
+                    <td colspan="10"><h6>Package 1</h6></td>
+                </tr>
+
+                <?php
+                foreach ($listAllSuperAdminPackage as $key => $value)
+                {
+                   ?>
+                   
+                       
+                        <tr>
+                            <td><?php echo $value['id'];?></td>
+                            <td>
+                                <?php echo $value['product_title'];?>&nbsp;
+                                </td>
+                            
+                            <!--<td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $value['image1'];?>" width="60" height="50" border="0">              
+                            </td>-->
+                            <td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $value['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            <td style="text-align:center;">
+                                <?php 
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                <?php
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="/agentSuperAdmin/smallPackage/edit/<?php echo $value['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                            </td>
+                            <td>
+                                <img src="/images/delete.gif" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del">
+                            </td>
+                        </tr>
+                        <?php
+                }
+            }
+            else
+            {
+            ?>
+                    <tr><td colspan="5"><?php echo "Oops No Package added Yet.."; ?></td></tr>
+            <?php    
+            }
+            if(count($listAllSuperAdminPackage2) != '')
+            { 
+                 ?>
+                <tr>
+                    <td colspan="10"><h6></h6></td>
+                </tr>
+                <tr>
+                    <td colspan="10"><h6>Package 2</h6></td>
+                </tr>
+
+                <?php
+                foreach ($listAllSuperAdminPackage2 as $key => $value2)
+                {
+                   ?>
+                        
+                        <tr>
+                            <td><?php echo $value2['id'];?></td>
+                            <td>
+                                <?php echo $value2['product_title'];?>&nbsp;
+                                </td>
+                            
+                            <!--<td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $value2['image1'];?>" width="60" height="50" border="0">              
+                            </td>-->
+                            <td>
+                                <img src="/images/products/agent_super_admin/small_package/<?php echo $value2['image2'];?>" width="60" height="50" border="0"> 
+                            </td>
+                            
+                            <td style="text-align:center;">
+                                <?php 
+                                if($value2['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value2['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value2['id']; ?>" class="stof">
+                                <?php
+                                }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="/agentSuperAdmin/smallPackage/edit/<?php echo $value2['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                            </td>
+                            <td>
+                                <img src="/images/delete.gif" id="<?php echo $value2['id']; ?>" border="0" width="20" height="20" class="del">
+                            </td>
+                        </tr>
+                        <?php
+                }
+            }
+            
+            ?>
+             <tr><td colspan="9"><a href="/agentSuperAdmin/smallPackage/add" style="text-decoration:none; float:right; margin-bottpm:8px;"><img src="/images/plus.png" width="" height="" border="0"></a></td></tr>
+        </tbody>
+    </table>
+</div>

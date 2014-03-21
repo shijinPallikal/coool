@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/coolwebsite/!svn/ver/87/module/Admin/view/admin/services-page-template
+END
+edit.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/coolwebsite/!svn/ver/87/module/Admin/view/admin/services-page-template/edit.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/coolwebsite/!svn/ver/87/module/Admin/view/admin/services-page-template/index.phtml
+END
+add.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/coolwebsite/!svn/ver/87/module/Admin/view/admin/services-page-template/add.phtml
+END
+ajax-list.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/coolwebsite/!svn/ver/87/module/Admin/view/admin/services-page-template/ajax-list.phtml
+END

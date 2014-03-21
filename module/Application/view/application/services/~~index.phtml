@@ -1,0 +1,152 @@
+<script>
+
+    function contentList(id){     
+        var pageId = id;
+        //alert(pageId);
+        $.ajax({
+            type:"post",
+             url:"<?php echo $this->basePath().'/services/ajaxpageheading'?>",             
+             data:{pageId:pageId},
+             cache:false,
+             dataType:'html',
+             beforeSend:function(){
+             },
+             complete:function(){
+             },
+             success:function(data){
+                //alert(data);
+                $('#page_head').html(data);
+             },
+             error:function(){
+                 alert('error');
+             }  
+        });
+        $.ajax({
+             type:"post",
+             url:"<?php echo $this->basePath().'/services/ajaxlist'?>",             
+             data:{pageId:pageId},
+             cache:false,
+             dataType:'html',
+             beforeSend:function(){
+             },
+             complete:function(){
+             },
+             success:function(data){
+                //alert(data);
+                $('#page_content').html(data);
+             },
+             error:function(){
+                 alert('error');
+             }             
+        });       
+    }
+
+</script>
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <?php
+                foreach ($listMenuDataImageServices as $key => $value)
+                {
+                    if($value['image']!= '')
+                    {
+                    ?>
+                        <img src="<?php echo $this->basePath().'images/products/menu/'.$value['image'];?>" class="img-responsive" style="width:1024px; height:247px;" />
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <img src="<?php echo $this->basePath().'/images/photos/paket_bnr.jpg';?>" class="img-responsive">
+                    <?php
+                    }
+                }
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+
+<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            		<div class="posts">
+                		<div class="tags">
+				 <a href="websitepackages.php" <?php if($currPageSub=='websitepackages.php') { ?> class="active" <?php } ?>>Website Packages</a> 
+                                 <a href="responsive.php"<?php if($currPageSub=='responsive.php' || $currPageSub=='responsive2.php' ||
+								  $currPageSub=='responsive3.php' || $currPageSub=='responsive4.php' || $currPageSub=='responsive5.php' || $currPageSub=='responsive6.php' || 
+								  $currPageSub=='responsive7.php' || $currPageSub=='responsive8.php' ) {?> class="active"  <?php } ?>>Responsive Samples</a> 
+                                 <a href="whyresponsive.php" <?php if($currPageSub=='whyresponsive.php') { ?> class="active" <?php } ?>>Why You Should Go Responsive</a> 
+                                 <a href="ecommerce.php"       <?php if($currPageSub=='ecommerce.php')       { ?> class="active"  <?php } ?>>Ecommerse</a> 
+                                 <a href="products.php"        <?php if($currPageSub=='products.php')        { ?> class="active"  <?php } ?>>Our Products</a> 
+                                 <!-- <a href="otherservices.php"   <?php if($currPageSub=='otherservices.php')   { ?> class="active"   <?php } ?>>Other Services</a> -->
+                                 <a href="website_tools.php"   <?php if($currPageSub=='website_tools.php')   { ?> class="active"  <?php } ?>>Included Website Tools</a>
+						</div>
+					</div>
+       		 </div>
+    	</div>
+	</div>
+
+<!-- content area -->
+
+<div class="content blog">
+  <div class="container">
+    <div class="row">   
+	<!-- Sidebar -->
+   <!-- Sidebar -->
+    <div class="col-md-3">
+                  <div class="sidey">
+                     <ul class="nav">
+                         <?php foreach($servicePage as $value){?>
+                         <li><a style="cursor: pointer;" onclick="javascript:contentList('<?=$value['id'];?>')"><?=$value['page_name'];?></a></li>
+                         <?php }?>                           
+                     </ul>
+                  </div>
+    </div>
+<!-- Sidebar ends -->                                                
+<!-- Sidebar ends -->                                                
+
+     <!-- right column -->
+
+
+<div class="col-md-9">
+<div class="posts">
+<div class="entry">
+    <h2><a href="#"><div id="page_head"><?=$pageName;?></div></a></h2>
+
+<hr />
+<div class="content about-one">
+<div class="container">
+<div class="row">
+<!--/* content come here */-->
+
+<div id="page_content" style="margin: 0;padding: 0;"><?php foreach($serPageContent as $content) echo $content['content_description'];?></div>
+
+<!--/* content come here */-->
+
+<div class="clearfix">&nbsp;</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+	
+	<!-- right column -->
+  </div>
+  <!-- row ends -->
+ </div>
+ <!-- container ends -->
+</div>
+<!-- content blog ends -->
+
+
+
+
+    

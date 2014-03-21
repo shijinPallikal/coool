@@ -1,0 +1,48 @@
+  <div class="block-content collapse in">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Language</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $cnt= count($languagesDatas);
+                    foreach ($languagesDatas as $key => $value)
+                    {
+          
+                        ?>                         
+    	                <tr>
+                            <td><?php echo $value['id'];?></td>
+                            <td><?php echo $value['languages'];?></td>
+    	                    <td><?php 
+                            
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                    ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                    <?php
+                                }
+                                ?>
+                            </td>
+    	                    
+    	                    <td>
+    	                    	<a href="/admin/languages/edit/<?php echo $value['id']; ?>" style="text-decoration:none;"><img src="/images/edit.png" border="0" width="20" height="20"></a>
+    	                    </td>
+                            
+    	                </tr>
+                        <?php
+                    }
+                    ?>
+               </tbody>
+            </table>
+        </div>

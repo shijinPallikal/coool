@@ -1,0 +1,257 @@
+<script src="/js/admin/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        //$("#contactus_form").validate();
+
+        // validate signup form on keyup and submit
+        $("#contactus_form").validate({
+            rules: {
+                company: "required",
+               
+            
+            },
+            messages: {
+                company: "company Please",
+                
+            }
+                    
+        });
+
+        
+    });
+</script>
+<script>
+    $(document).ready(function ()
+    {
+        var options = {  
+            url:        '/application/contacts/email', 
+            dataType: 'html',
+            success:    function(data) { 
+            //alert(data);
+                $('#msg').html(data);
+         
+                //$('input[type="text"],textarea').val('');
+                //$('input[type="email"]').val('');
+            } 
+        }; 
+   
+        $('#contactus_form').ajaxForm(options);
+    });
+</script>
+
+
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <?php
+                foreach ($listMenuDatasImageContacts as $key => $value)
+                {
+                    if($value['image']!= '')
+                    {
+                    ?>
+                        <img src="images/products/menu/<?php echo $value['image'];?>" class="img-responsive" style="width:1024px; height:247px;" />
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <img src="/images/photos/suprt_bnr.jpg" class="img-responsive">
+                    <?php
+                    }
+                }
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+
+<!-- sublink starts -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="posts">
+                <div class="tags">
+                    <a href="">Contact us</a> <a href="">AboutUs</a>  <!-- <a href="#">Why You Should go responsive</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- sublink ends -->
+
+<!-- content area -->
+
+<div class="content blog">
+    <div class="container">
+        <div class="row">
+            <!-- first column starts -->
+            <div class="col-md-8">
+                <div class="posts">
+                    <div class="entry">
+                        <h2><a href="#">Contact Us</a></h2>
+                        <?php
+                        $c= count($listContactusDatas);
+                        foreach ($listContactusDatas as $key => $value)
+                        {
+                          $title[]= $value['title'];
+                          $dis[]= $value['description'];
+                          $country[]= $value['country'];
+                          $phone[]= $value['phone'];
+                          $service[]= $value['service_email'];
+                         
+                        }
+                       
+                        ?>
+                        <h4><?php echo $title[1]?></h4>
+                        <p><?php echo $dis[1]?></p>
+                        <br>
+                        <div class="cwell">
+                            <img src="/images/photos/contactUs.png" class="img-responsive pull-left width"> 
+                        </div>
+        
+                        <div class="cwell">
+                            <!-- Address section -->
+                            <h4 class="title">Customer Care</h4>
+                    
+                            <div class="address">
+                                <address>
+                                    <!-- Address -->
+                                    <?php
+                                    for($i= 0; $i<= $c-1; $i++)
+                                    {
+                                      echo "<span style='width:55px; float:left;'>".ucfirst($country[$i])."</span>"."<span style='font-size:12px;float:left; width:10px;'>".':'."</span><span style='width:55px; float:left;'>".$phone[$i]."</span><br>";
+
+                                    }
+                                    ?>
+                              
+                                    <!-- Phone number -->
+                                </address>
+                                <address>
+                                    <!-- Name -->
+                                    <strong>E-mail</strong><br>
+                                    <!-- Email --> 
+                                    <a href="mailto:#"><?php echo $service[1]?></a>
+                                </address>
+                                <!-- Social media icons -->
+                                <strong>Get in touch:</strong>
+                                <div class="social">
+                                    <a href="http://www.facebook.com"><i class="icon-facebook facebook"></i></a>
+                                    <a href="http://www.twitter.com"><i class="icon-twitter twitter"></i></a>
+                                    <a href="http://www.linkedin.com"><i class="icon-linkedin linkedin"></i></a>
+                                    <a href="http://www.gooleplus.com"><i class="icon-google-plus google-plus"></i></a>
+                                    <a href="http://www.pintrust.com/"><i class="icon-pinterest pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="gmap" style="margin-top:30px;">
+                    <!-- Google Maps. Replace the below iframe with your Google Maps embed code -->
+                    <iframe height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Google+India+Bangalore,+Bennigana+Halli,+Bangalore,+Karnataka&amp;aq=0&amp;oq=google+&amp;sll=9.930582,78.12303&amp;sspn=0.192085,0.308647&amp;ie=UTF8&amp;hq=Google&amp;hnear=Bennigana+Halli,+Bangalore,+Bengaluru+Urban,+Karnataka&amp;t=m&amp;ll=12.993518,77.660294&amp;spn=0.012545,0.036006&amp;z=15&amp;output=embed"></iframe>
+                </div>
+            </div>
+            <!-- first column ends -->
+            <div class="col-md-4">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Widget -->
+                    <div class="widget">
+                        <h4>Yes, please contact and tell Us more:</h4>
+                        <div id="msg" style="font-size:12px; float:right; color:red;"></div>
+                        <form class="form-inline" role="form" name="contactus_form" id="contactus_form" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control mar_top" id="company" name="company" placeholder="Company Name..." required>
+                                <input type="text" class="form-control mar_top" id="cp" name="cp" placeholder="Contact Person..." required>
+                                <input type="tel" class="form-control mar_top" id="phone" name="phone" placeholder="Phone Number..." required>
+                                <input type="text" class="form-control mar_top" id="email" name="email" placeholder="Email..." required>
+                            </div>
+                            <h5>Iam Most Interested in</h5>
+                            <div class="checkbox" >
+                                <label>
+                                    <input type="checkbox" id="ch1" name="ch1" value="Homepage"> Homepage
+                                </label>
+                            </div>
+          
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch2" name="ch2" value="Homepage Mobile"> Homepage Mobile
+                                </label>
+                            </div>
+                   
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch3" name="ch3" value="Homepage Responsive"> Homepage Responsive
+                                </label>
+                            </div>
+                    
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch4" name="ch4" value="E-Commerse"> E-Commerse
+                                </label>
+                            </div>
+          
+                            <div class="selectbox">
+                                <select class="form-control" id="sel" name="sel">
+                                    <option value="">Please select..</option>
+                                    <option value="CMS">CMS</option>
+                                    <option value="Wordpress">Wordpress</option>
+                                </select>
+                            </div>                                  
+
+                            <button type="submit" class="btn btn-danger mar_top">Send</button>
+                        </form>
+                    </div>
+            
+                    <div class="widget">
+                        <h4>Contact Us</h4>
+                        <?php
+                        for($i= 0; $i<= $c-1; $i++)
+                        {
+                            ?>
+                            <span style='width:55px; float:left;'>
+                                <?php
+                                    if($country[$i] == "Sweden")
+                                    {
+                                      echo "Sverige";
+                                    }
+                                    else
+                                    {
+                                      echo ucfirst($country[$i]);
+                                    }
+                                ?>
+                            </span>
+                            <span style='font-size:12px;float:left; width:10px;'>:</span>
+                            <span style='width:55px; float:left;'><?php echo $phone[$i] ?></span><br>
+                        <?php
+                        }
+                        ?>
+                    </div> 
+
+                    <div class="widget">
+                        <h4>We will help you succeed on the Web</h4>
+                        <p>We create a website for your needs at a good price.</p>
+                        <p class="bold">Get a great looking website today!</p>
+                    </div>
+                </div>
+                <!-- Sidebar ends -->                                                
+            </div>
+            <!-- colmd4 ends -->
+        </div>
+        <!-- row ends -->
+    </div>
+    <!-- container ends -->
+</div>
+<!-- content blog ends -->
+
+<!-- Footer starts -->

@@ -1,0 +1,35 @@
+<div class="block-content collapse in">
+                <table class="table table-striped">
+                    <tbody>
+                    <?php
+                    $cnt= count($languagesDatas);
+                    foreach ($languagesDatas as $key => $value)
+                    {
+          
+                        ?>                         
+    	                <tr>
+                            <td style="text-align:center;"><?php echo $value['languages'];?></td>
+    	                    <td style="text-align:center;"><?php 
+                            
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="" class="ston">
+                                <?php
+                                }
+                                
+                                ?>
+                            </td>
+    	                    
+    	                   
+                            
+    	                </tr>
+                        <?php
+                    }
+                    ?>
+                    <tr>
+                        <td colspan="2 " style="text-align:center;">If you want to Change language<a href="/admin/languages"> Click Here </a>.After change the language please login once again</td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>

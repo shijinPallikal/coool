@@ -1,0 +1,111 @@
+<style type="text/css">
+#addLanguages { width: 500px; }
+#addLanguages label { width: 250px; }
+#addLanguages label.error, #addLanguages input.submit { margin-left: 253px; }
+#addLanguages { width: 670px; }
+#addLanguages label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+#newsletter_topics label.error {
+	display: none;
+	margin-left: 103px;
+}
+</style>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        // validate signup form on keyup and submit
+        $("#addLanguages").validate({
+            rules: {
+               lan: "required",            
+            },
+            messages: {
+                lan: "Languages Please",
+            }
+                    
+        });
+    });
+
+</script>
+
+<div class="span9" id="content">
+    <div class="row-fluid">
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="breadcrumb">
+                    <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
+                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
+                    <li>
+                        <a href="">Dashboard</a> <span class="divider">/</span>	
+                    </li>
+                    <li>
+                        <a href="">Home</a> <span class="divider">/</span>	
+                    </li>
+                    <li class="active"><a href="/admin/languages/add" >Add New Languages</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <a class="btn btn-primary " href="/admin/languages">List Languages</a>
+    </div>
+
+
+    <div class="row-fluid">
+        <div class="span12">
+
+            <!-- block - -->
+
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">Languages Master Form</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form class="form-horizontal" id="addLanguages" name="addLanguages" method="post" enctype="multipart/form-data">
+                            <fieldset>
+                                <legend>Form Components</legend>
+                                <?php
+                                foreach ($editLanguagesData as $key => $value)
+                                {
+                                ?>
+                                    <div class="control-group">
+                                        <label class="control-label" for="typeahead">Language</label>
+                                        <div class="controls">
+                                            <input type="text" name="lan" id="lan" class="span6" id="typeahead" value="<?php echo $value['languages']; ?>" >
+                                            
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="submit" name="submit" class="btn btn-primary">Save</button>
+                                        <button type="reset" class="btn" id="cancel">Cancel</button>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+<script type="text/javascript">
+    $("#cancel").click(function()
+    {
+        window.location.href= "<?php echo $this->basePath()?>/admin/languages";
+    });
+
+</script>

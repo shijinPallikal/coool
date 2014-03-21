@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/index
+END
+admin-authenticate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/index/admin-authenticate.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/index/index.phtml
+END
+admin-dashboard.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/coolwebsite/!svn/ver/3/module/Admin/view/admin/index/admin-dashboard.phtml
+END

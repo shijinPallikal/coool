@@ -1,0 +1,136 @@
+<script type="text/javascript">
+
+    
+    $(document).ready(function() {
+        showTable();
+
+    });
+    
+    function showTable()
+    {
+        
+        $.ajax({
+
+            type:"POST",
+            url:"/agentSuperAdmin/bigPackage/ajaxList",
+            cache:false,
+            data:{},
+            dataType:"html",
+            success:function(data)
+            {
+                //alert(data);//return;
+                $("#ajx_table").html(data);
+                //showTable(srt);
+            }
+        });
+    }
+
+       
+    
+    //Status off
+    $('.ston').live('click',function()
+    {
+        var offId = $(this).attr('id'); 
+        $.ajax({
+            type:"POST",
+            url:"/admin/bigPackage/status",
+            cache:false,
+            data:{offId:offId },
+            dataType:"html",
+            success:function(data)
+            {
+                $("#msg").html(data);
+                showTable();
+            }
+        });
+
+    });
+
+    //Status On
+    $('.stof').live('click',function()
+    {
+        var onId = $(this).attr('id'); 
+        $.ajax({
+            type:"POST",
+            url:"/admin/bigPackage/status",
+            cache:false,
+            data:{ onId:onId },
+            dataType:"html",
+            success:function(data)
+            {
+                $("#msg").html(data);
+                showTable();
+            }
+        });
+
+    });
+
+   
+    //delete function
+    $('.del').live('click',function()
+    {
+        var delid = $(this).attr('id'); 
+        $.ajax({
+            type:"POST",
+            url:"/admin/bigPackage/delete",
+            cache:false,
+            data:{ delid:delid },
+            dataType:"html",
+            success:function(data)
+            {
+                $("#msg").html(data);
+                showTable();
+            }
+        });
+
+    });
+
+
+</script>
+
+
+
+
+<style type="text/css">
+    .ston { cursor: pointer;} .stof { cursor: pointer;} .del { cursor: pointer;}
+
+</style>
+
+<div class="span9" id="content">
+    <div class="row-fluid">
+      	<div class="navbar">
+           	<div class="navbar-inner">
+	            <ul class="breadcrumb">
+	                <i class="icon-chevron-left hide-sidebar">
+                        <a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a>
+                    </i>
+	                <i class="icon-chevron-right show-sidebar" style="display:none;">
+                        <a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a>
+                    </i>
+	                <li>
+	                    <a href="home.php">Dashboard</a> <span class="divider">/</span>	
+	                </li>
+	                <li>
+	                    <a href="home.php">Home</a> <span class="divider">/</span>	
+	                </li>
+	                <li class="active">Big Packages</li>
+	            </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">Home widget</div>
+                    <div id="msg" style="font-size:12px; color:red; text-align:center;"></div>
+                    <a href="/agentSuperAdmin/bigPackage/add" style="text-decoration:none; float:right; margin-bottpm:8px;"><img src="/images/plus.png" width="" height="" border="0"></a>
+                    <div class="pull-right">
+                        <span class="badge badge-info"></span>
+                    </div>
+                </div>
+                <div id="ajx_table"></div>
+            </div>
+        </div>
+    </div>
+                 

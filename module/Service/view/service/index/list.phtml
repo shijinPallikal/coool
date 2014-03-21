@@ -1,0 +1,138 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#quick_search").keyup(function(){
+			var s= $("#quick_search").val();
+			//alert(s);
+		});
+
+	});
+</script>
+<table border="1">
+<tr>
+	<td colspan="6" align="center">
+		<span style="font-size:12px;color:red;">
+            <?php
+            if(count($flashMessages))
+            {
+                foreach ($flashMessages as $msg)
+                {
+                    echo $msg.'<br>';	
+                }	
+            }
+            ?>
+        </span>
+	</td>	
+	<td colspan="4" align="right">
+		<input type="button" id="add" value="Add New Complaint">
+	</td>	
+</tr>
+<tr>
+	<td colspan="10">
+		<form action="<?php echo $this->basePath().'/service/list'?>" method="post">
+			<table border="1" width="100%">
+				<tr>
+					<td colspan="2" width="20%"><input type="text" name="search_name" id="search_name" style="width:140px;" placeholder="Name Please.."></td>
+					<td colspan="2" width="20%">
+						<select name="search_product" id="search_product" style="width:140px;">
+							<option value="">Product Please</option>
+							<option value="hardware">Hardware</option>
+							<option value="software">Software</option>
+							<option value="printer">Printer</option>
+							<option value="ups">Ups</option>
+						</select>
+
+					</td>
+					<td colspan="2" width="20%">
+						<select name="search_assign" id="search_assign" style="width:140px;">
+							<option value="">Assign To</option>
+							<option value="Sam">Sam</option>
+							<option value="Shijin">Shijin</option>
+							<option value="Sumesh">Sumesh</option>
+							<option value="Baji">Baji</option>
+						</select>
+
+					</td>
+					<td colspan="2" width="20%">
+						<select name="search_status" id="search_status" style="width:140px;">
+							<option value="">Status</option>
+							<option value="0">Pending</option>
+							<option value="1">Solved</option>
+							<option value="2">To Company</option>
+						</select>
+
+					</td>
+					<td colspan="2" width="20%" align="center"><input type="submit" id="search_submit" name="search_submit" value="Search"></td>
+				</tr>
+			</table>
+		</form>
+	</td>	
+</tr>
+<tr>
+	<th>Unique Id</th>
+	<th>Name</th>
+	<th>Type of Product/Problem</th>
+	<th>Urgency</th>
+	<th>Finish Date</th>
+	<th>Next Call</th>
+	<th>Assign To</th>
+	<th>Status</th>
+	<th colspan="2">Action</th>
+</tr>
+<?php 
+if(count($history))
+{
+	foreach ($history as $key => $value)
+	{
+	?>
+			<tr>
+				<td><?php echo $value['uniqueId']; ?></td>
+				<td><?php echo $value['firstName'] .' '. $value['LastName']; ?></td>
+				<td><?php echo $value['productType']?></td>
+				<td><?php echo $value['problemType']; ?></td>
+				<td><?php echo $value['finishDate']; ?></td>
+				<td><?php echo $value['nextCall']; ?></td>
+				<td><?php echo $value['assignTo']; ?></td>
+				<td>
+					<?php
+					if($value['status'] == 0)
+					{
+					?>
+						<span style="color:red;">Pending</span>
+					<?php
+					}
+					else if($value['status'] == 1)
+					{
+					?>
+						<span style="color:green;">Solved</span>
+					<?php
+					}
+					else if($value['status'] == 2)
+					{
+					?>
+						<span style="color:blue;">To Company</span>
+					<?php
+					}
+					?> 
+				</td>
+				<td><a href="<?php echo $this->url('detailedListing', array('action'=>'detailedListing', 'id' =>$value['id'])); ?>" style="text-decoration:none;">View More</a></td>
+				<td><a href="<?php echo $this->url('editHistory', array('action' => 'editHistory', 'id' => $value['id'])); ?>">Edit</a></td>
+			</tr>
+	<?php	
+	}
+}
+else
+{
+?>
+	<tr><td colspan="10" style="color:red; text-align:center;">Ooop No result found..Sorry</td></tr>
+<?php
+}
+?>
+</table>
+
+<script type="text/javascript">
+	$("#add").click(function()
+	{
+		window.location.href= "<?php echo $this->basePath()?>/service/add";
+	});
+
+</script>

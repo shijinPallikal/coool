@@ -1,0 +1,76 @@
+<div class="block-content collapse in">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Display Order</th>
+                <th style="text-align:center;">Status</th>
+                <th style="text-align:center;" colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            $cnt= count($ecommercePackageData);
+            foreach ($ecommercePackageData as $key => $value)
+            {
+                //echo $c= count($value['featured_product']);
+            ?>
+                <tr>
+                    <td><?php echo $value['id'];?></td>
+                    <td>
+                        <?php echo $value['title'];?>&nbsp;
+                    </td>
+                    
+                    <td>
+                        <img src="/images/products/ecommerce_package/<?php echo $value['image'];?>" width="60" height="50" border="0">              
+                    </td>
+                    <td>
+                            <?php //echo count($value);?>
+                                <select name="sel_disp_order_<?php echo $value['id'];?>" onchange="javascript:ajxUpdateDispOrder(<?php echo $value['id'];?>,this.value);">
+ 
+                                    <?php 
+                                    for($i=1;$i<=$cnt;$i++)
+                                    {
+                                    ?>
+                                        <option value="<?php echo $i;?>" <?php if($value['display_order']==$i) echo "selected"; ?>><?php echo $i;?></option>
+                                    <?php
+                                    }
+                                    ?>    
+                                </select> 
+                                <span name="ajx_result_<?php echo $value['display_order'];?>" id="ajx_result_<?php echo $value['id'];?>"></span>
+
+
+                            </td>
+                    
+                    <td style="text-align:center;">
+                        <?php 
+                        if($value['status'] == 1)
+                        {
+                        ?>
+                            <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                        <?php
+                        }
+                        else 
+                        {
+                        ?>
+                            <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                        <?php
+                        }
+                        ?>
+                    </td>
+
+                    <td>
+                        <a href="/admin/ecommercePackage/edit/<?php echo $value['id'];?>"><img src="/images/edit.gif" border="0" width="40" height="40" id="">
+                    </td>
+                    <td>
+                        <img src="/images/delete.gif" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del">
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>

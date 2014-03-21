@@ -1,0 +1,55 @@
+<link href="/css/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/css/admin/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+<link href="/css/admin/vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
+<link href="/css/admin/assets/styles.css" rel="stylesheet" media="screen">
+<link href="/css/admin/style/style.css" rel="stylesheet" media="screen">
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="/js/admin/vendors/jquery-1.9.1.min.js"></script>
+<script src="/js/admin/js/jquery.validate.js"></script>
+<script src="/js/admin/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/admin/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+<script src="/js/admin/assets/scripts.js"></script>
+<script src="/js/admin/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+ <div id="login">
+    <div class="container">
+
+      <form class="form-signin" id='myform' method="post" action ="admin/adminAuthenticate">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <span style="font-size:12px;color:red; padding:25px;">
+            <?php
+            if(count($flashMessages))
+            {
+                foreach ($flashMessages as $msg)
+                {
+                    echo $msg;	
+                }	
+            }
+            ?>
+        </span>
+        <input type="text" class="input-block-level" name="username" id="username" placeholder="Username">
+        <input type="password" class="input-block-level" name="password" id="password" placeholder="Password">
+        
+<button type="submit" class="btn btn-large btn-primary" >Sign in</button>
+      
+
+	<?php
+	if(isset($val) == "invalid")
+	{
+	?>
+<div class="space"> </div>
+	<div class="alert alert-error">
+			<button data-dismiss="alert" class="close">x</button>
+			<strong>Error!</strong> Invalid username or password.
+	</div>
+	<?php 
+	} 
+        ?>
+      </form>
+
+    </div> <!-- /container -->
+    <script src="/admin/vendors/jquery-1.9.1.min.js"></script>
+    <script src="/admin/bootstrap/js/bootstrap.min.js"></script>
+  </div>

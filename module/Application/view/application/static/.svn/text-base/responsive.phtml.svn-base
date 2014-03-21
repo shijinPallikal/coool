@@ -1,0 +1,196 @@
+<script>
+function getresponsive(get){
+    var urlsrc=get;    
+    return urlsrc; 
+ }
+
+</script>
+
+<script type="text/javascript" src="js/jquery-v1.7.1.js"></script>
+  <script type="text/javascript">
+$(function() {
+
+
+	$('#iphone').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'iphone');
+		$('#device-detail').attr('class', 'iphone-detail');
+	});
+
+	$('#iphone-l').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'iphone-l');
+		$('#device-detail').attr('class', 'iphone-l-detail');
+	});
+
+	$('#ipad').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'ipad');
+		$('#device-detail').attr('class', 'ipad-detail');
+	});
+
+	$('#ipad-l').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'ipad-l');
+		$('#device-detail').attr('class', 'ipad-l-detail');
+	});
+
+	$('#desktop').click(function() {
+		$("#screen-options li").removeClass("active");
+		$(this).addClass("active");
+		$('#viewport').attr('class', 'desktop');
+		$('#device-detail').attr('class', 'desktop-detail');
+	});
+
+	///get url from form field
+	function updateframe() {
+      var url = $("#getURL").val();
+      //alert(url);
+
+      /// check for http
+      if ($("#getURL").val().match(/^http/)) {
+            $('#displayframe').attr('src', url);
+        }
+        else{
+        	validURL = 'http://' + url;
+        	//alert(validURL);
+        	$('#displayframe').attr('src', validURL);
+        	return false;
+        }
+
+      }
+
+    /// form actions
+    $("#button").click(function() {
+		updateframe();
+  		RandomLink();
+	});
+
+	$('#getURL').keypress(function(e){
+      if(e.which == 13){
+       updateframe();
+       }
+      });
+
+    $(function() {
+    $('input[type=text]').focus(function() {
+      $(this).val('')
+      });
+
+ });
+
+
+    //// Check for url in url
+    var givenURL = (RegExp('url='+'(.+?)(&|$)').exec(location.search)||[,null])[1];
+    if (givenURL == null){
+      ////set-up random url
+      
+      base = "http://www.";
+			/* respo_2/index.html resp-interior/index.html var urls = ["bbc.co.uk/bbcone","hicksdesign.co.uk","anderssonwise.com","forefathersgroup.com","jamus.co.uk","bostonglobe.com"];*/
+			var urls = ["<?php echo 'cooolwebsite.com/coolwebsite_old/respo_2/index.html'?>"];
+			var randomURL = urls[Math.floor(Math.random() * urls.length)];
+			var randomhttpURL = (base + randomURL);
+			$('#displayframe').attr('src', randomhttpURL);
+          	$('#getURL').attr('value', randomURL);
+			
+			updateframe();
+	  		RandomLink();
+    }else{
+      $('#getURL').attr('value',givenURL );
+      $('#displayframe').attr('src',givenURL);
+    }
+
+
+});
+</script>
+
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <img src="<?php echo $this->basePath().'/images/photos/about_bnr.jpg';?>" class="img-responsive">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- banner starts -->
+<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            		<div class="posts">
+                		<div class="tags">
+                                    <a href="<?=$this->basePath().'/websitePackage';?>" <?php if($currPageSub==$this->basePath().'/websitePackage') { ?> class="active" <?php } ?>>Website Packages</a> 
+                                 <a href="<?=$this->basePath().'/static/responsive';?>"<?php if($currPageSub=='responsive.php' || $currPageSub=='responsive2.php' ||
+								  $currPageSub=='responsive3.php' || $currPageSub=='responsive4.php' || $currPageSub=='responsive5.php' || $currPageSub=='responsive6.php' || 
+								  $currPageSub=='responsive7.php' || $currPageSub=='responsive8.php' ) {?> class="active"  <?php } ?>>Responsive Samples</a> 
+                                 <a href="<?=$this->basePath().'/static/whyresponsive';?>" <?php if($currPageSub=='whyresponsive.php') { ?> class="active" <?php } ?>>Why You Should Go Responsive</a> 
+                                 <a href="<?=$this->basePath().'/ecommerce';?>"       <?php if($currPageSub=='ecommerce.php')       { ?> class="active"  <?php } ?>>Ecommerse</a> 
+                                 <a href="<?=$this->basePath().'/ourProduct';?>"        <?php if($currPageSub=='products.php')        { ?> class="active"  <?php } ?>>Our Products</a> 
+                                 <!-- <a href="otherservices.php"   <?php if($currPageSub=='otherservices.php')   { ?> class="active"   <?php } ?>>Other Services</a> -->
+<!--                                 <a href="website_tools.php"   <?php //if($currPageSub=='website_tools.php')   { ?> class="active"  <?php //} ?>>Included Website Tools</a>-->
+						</div>
+					</div>
+       		 </div>
+    	</div>
+	</div>
+<!-- content area -->
+
+<div class="content project">
+  <div class="container">
+    <div class="row">
+                           <div class="col-md-12">
+                              
+                            <div class="visible-lg">
+                                <ul id="screen-options">	
+                                    <li id="iphone" class="active1">iPhone</li>
+                                    <li id="iphone-l">iPhone landscape</li>
+                                    <li id="ipad">iPad</li>
+                                    <li id="ipad-l">iPad landscape</li>
+                                    <li id="desktop">Desktop</span></li>
+                                </ul>
+						 </div>
+                        <div class="clearfix"></div>
+                              <div class="related-projects respo_thumps hidden-xs">
+                                	<h5 class="title">Related Projects</h5>
+                                        <a href="<?=$this->basePath().'/static/responsive';?>"><img src="<?php echo $this->basePath().'/images/photos/resp-thump2.jpg';?>" alt="" /></a> 
+                                        <a href="<?=$this->basePath().'/static/responsive2';?>"><img src="<?php echo $this->basePath().'/images/photos/resp-thump3.png';?>" alt="" /></a> 
+                                	<a href="<?=$this->basePath().'/static/responsive3';?>"><img src="<?php echo $this->basePath().'/images/photos/resp-thump4.jpg';?>" alt="" /></a> 
+                               		<a href="<?=$this->basePath().'/static/responsive4';?>"><img src="<?php echo $this->basePath().'/images/photos/resp-thump6.jpg';?>" alt="" /></a>
+                                	<a href="<?=$this->basePath().'/static/responsive5';?>"><img src="<?php echo $this->basePath().'/images/photos/resp-thump8.jpg';?>" alt="" class="m-over" /></a>
+                                        <a href="<?=$this->basePath().'/static/responsive6';?>"><img src="<?php echo $this->basePath().'/images/photos/thumb_1.png';?>" alt="" class="m-over" id="m-over-active" /></a>
+                         			<!--<a href="responsive2.php"><img src="img/photos/dj-res.jpg" alt="" class="m-over" /></a>-->
+                              </div>
+                              
+                               <div class="related-projects respo_thumps visible-xs">
+                                	<h5 class="title">Related Projects</h5>
+                                	<a href="#responsive3.php"><img src="<?php echo $this->basePath().'/images/photos/resp-thump2.jpg';?>" alt="" /></a> 
+                                        <a href="#responsive7.php"><img src="<?php echo $this->basePath().'/images/photos/resp-thump3.png';?>" alt="" /></a> 
+                                	<a href="#responsive4.php"><img src="<?php echo $this->basePath().'/images/photos/resp-thump4.jpg';?>" alt="" /></a> 
+                               		<a href="#responsive5.php"><img src="<?php echo $this->basePath().'/images/photos/resp-thump6.jpg';?>" alt="" /></a>
+                                	<a href="#responsive8.php"><img src="<?php echo $this->basePath().'/images/photos/resp-thump8.jpg';?>" alt="" class="m-over" /></a>
+                                        <a href="#responsive.php"><img src="<?php echo $this->basePath().'/images/photos/thumb_1.png';?>" alt="" class="m-over" id="m-over-active" /></a>
+                                    
+                                    <h5 class="title">Visit Our Links</h5>
+                                    <a href="">Further details you can visit our Links</p></a>
+                              </div>
+                              <div class="clearfix"></div>
+                             
+                               <div id="viewport" class="iphone">
+                               	<iframe id="displayframe" name="displayframe" height="480" width="320" src="#"></iframe></div>
+                             
+                   				<div id="device-detail" class="iphone-detail">device detail</div>
+                           </div>
+    </div>
+  </div>
+</div>
+<!-- content blog ends -->
+
+
+

@@ -1,0 +1,78 @@
+<div class="block-content collapse in" style="overflow:visible;">
+    <table class="table table-striped">
+       <tbody>
+        <tr>
+        <td style="text-align:center;">Color Picker</td>
+        <td style="text-align:center;">Default Color</td>
+        <!--<td style="text-align:center;">Color Settings</td>-->
+        </tr><tr>sdfsdf
+            <?php echo "fhj";
+            if(count($colorsDatas) != '')
+            { 
+                foreach ($colorsDatas as $key => $value)
+                {
+                    
+                ?>
+                    
+                        <td style="text-align:center;">
+                            <?php 
+                            if($value['color_picker'] == 1)
+                            {
+                            ?>
+                                <img src="<?php echo $this->path ?>/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston_picker">
+                            <?php
+                            }
+                            else 
+                            {
+                            ?>
+                                <img src="<?php echo $this->path ?>/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof_picker">
+                            <?php
+                            }
+                            ?>
+                        </td>
+                        
+                        <td style="text-align:center;">
+                            <?php 
+                            if($value['color_field'] == 1)
+                            {
+                            ?>
+                                <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston_field">
+                            <?php
+                            }
+                            else 
+                            {
+                            ?>
+                                <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof_field">
+                            <?php
+                            }
+                            ?>
+                        </td>
+                        
+                        <!--<td style="text-align:center;">
+                            <?php 
+                            if($value['color_status'] == 1)
+                            {
+                            ?>
+                                <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                            <?php
+                            }
+                            else 
+                            {
+                            ?>
+                                <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                            <?php
+                            }
+                            ?>
+                        </td>-->
+
+                    
+                    </tr>
+                    <?php
+                }
+            }
+            
+            ?>
+            </tr>
+        </tbody>
+    </table>
+</div>

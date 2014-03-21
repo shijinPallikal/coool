@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/coolwebsite/!svn/ver/116/module/Admin/view/admin/languages
+END
+edit.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/coolwebsite/!svn/ver/133/module/Admin/view/admin/languages/edit.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/coolwebsite/!svn/ver/133/module/Admin/view/admin/languages/index.phtml
+END
+add.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/coolwebsite/!svn/ver/133/module/Admin/view/admin/languages/add.phtml
+END
+ajax-list.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/coolwebsite/!svn/ver/133/module/Admin/view/admin/languages/ajax-list.phtml
+END

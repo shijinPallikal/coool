@@ -1,0 +1,88 @@
+
+<div class="block-content collapse in">
+
+<table class="table table-striped">
+    <thead>
+        
+                        <tr>
+                            <!--<th>Id</th>-->
+                            <th>Language</th>
+                            <th>Menu Title</th>
+                            <th>Image</th>
+                            <th align="center">Order</th>
+                            <th>Status</th>
+                            <th colspan="2" style="text-align:center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $cnt= count($listAllMenuDatas);
+                    foreach ($listAllMenuData as $key => $value)
+                    {
+          
+                        ?>                         
+    	                <tr>
+                            <td><?php echo $value['meid'];?></td>
+    	                	<!--<td><?php //echo $value['languages'];?></td>-->
+                            <td><?php
+                                $s=strlen($value['menu_name']);
+                                if($s >20)
+                                {
+                                    echo substr($value['menu_name'],0,20).".....";
+                                }
+                                else
+                                {
+                                    echo $value['menu_name'];
+                                }
+                                ?>
+
+                            </td>
+                            <td>
+                                <img src="/images/products/menu/<?php echo $value['image'];?>" width="50" height="50"></td>
+    	                    <td>
+                            <?php //echo count($value);?>
+                                <select name="sel_disp_order_<?php echo $value['id'];?>" onchange="javascript:ajxUpdateDispOrder(<?php echo $value['id'];?>,this.value);">
+ 
+                                    <?php 
+                                    for($i=1;$i<=$cnt;$i++)
+                                    {
+                                    ?>
+                                        <option value="<?php echo $i;?>" <?php if($value['display_order']==$i) echo "selected"; ?>><?php echo $i;?></option>
+                                    <?php
+                                    }
+                                    ?>    
+                                </select> 
+                                <span name="ajx_result_<?php echo $value['display_order'];?>" id="ajx_result_<?php echo $value['id'];?>"></span>
+
+
+                            </td>
+    	                    <td><?php 
+                            
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                    ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                    <?php
+                                }
+                                ?>
+                            </td>
+    	                    
+    	                    <td>
+    	                    	<a href="/admin/menu/edit/<?php echo $value['id']; ?>" style="text-decoration:none;"><img src="/images/edit.png" border="0" width="20" height="20"></a>
+    	                    </td>
+                            <td>
+                                <img src="/images/delete.png" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del" />
+                            </td>
+    	                </tr>
+                        <?php
+                    }
+                    ?>
+               </tbody>
+            </table>
+        </div>
